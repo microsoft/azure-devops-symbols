@@ -2,6 +2,11 @@ import * as fsExtra from 'fs-extra';
 import * as crypto from 'crypto';
 import * as path from 'path';
 
+/** 
+ * The field to use in the javascript sourcemap file
+ * The file format is extensible where 'x_' is reserved for extensions and it is recommended to use the company name.
+ * See: https://sourcemaps.info/spec.html#h.ghqpj1ytqjbm
+ */
 export const sourceMapClientKeyField = "x_microsoft_symbol_client_key";
 
 export function computeSourceMapUrlLine(organization: string, clientKey: string, sourceFileName: string) {
