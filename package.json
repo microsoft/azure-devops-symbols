@@ -7,7 +7,7 @@
         "lint": "lage lint",
         "test": "lage test",
         "ci": "lage build lint test",
-        "change": "beachball change --branch origin/main"
+        "change": "beachball change --branch main"
     },
     "repository": {
         "type": "git",

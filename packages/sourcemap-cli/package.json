@@ -8,7 +8,7 @@
     },
     "scripts": {
         "build": "bld-scripts build",
-        "lint": "bld-scripts lint",
+        "lint": "bld-scripts lint"
     },
     "repository": {
         "type": "git",

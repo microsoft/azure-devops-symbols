@@ -11,6 +11,7 @@ function fail(message: string): never {
   process.exit(1);
 }
 
+
 const argv = yargs.options({
   organization: {
     type: 'string',
