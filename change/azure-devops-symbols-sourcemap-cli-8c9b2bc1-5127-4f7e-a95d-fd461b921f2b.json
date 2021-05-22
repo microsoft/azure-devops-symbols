@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update build scripts.",
-  "packageName": "azure-devops-symbols-sourcemap-cli",
-  "email": "dannyvv@microsoft.com",
-  "dependentChangeType": "patch"
-}
