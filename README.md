@@ -39,7 +39,7 @@ If you don't use webpack you can add an extra step in your pipeline by using the
 ```
 You have to configure the name of the organization to match. In the example above your azure devops url would be: `https://dev.azure.com/contoso`
 
-## Upload symbols
+## 2. Upload symbols
 You can use the standard [PublishSymbols](https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/symbols?view=azure-devops) task to upload symbols.
 
 > Note: This part is not yet implemented and we are working with the Azure DevOps team to get this incorporated
