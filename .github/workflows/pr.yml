@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 0
 
       - name: Check for change files
-        run: npx --no-install beachball check"
+        run: npx --no-install beachball check --branch origin/main "
 
       - name: Install package dependencies
         run: yarn install
