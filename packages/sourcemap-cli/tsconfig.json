@@ -1,0 +1,9 @@
+{
+  "extends": "azure-devops-symbols-build-tools/tsconfig-shared.json",
+  "compilerOptions": {
+    "outDir": "lib/"
+  },
+  "include": [
+    "src"
+  ]
+}

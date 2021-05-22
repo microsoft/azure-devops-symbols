@@ -1,0 +1,26 @@
+{
+    "name": "azure-devops-symbols-repo",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "build": "lage build",
+        "lint": "lage lint",
+        "test": "lage test",
+        "ci": "lage build lint test",
+        "change": "beachball change"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:microsoft/azure-devops-symbols.git"
+    },
+    "license": "MIT",
+    "workspaces": {
+        "packages": [
+            "packages/*"
+        ]
+    },
+    "devDependencies": {
+        "beachball": "^1.32.0",
+        "lage": "^0.24.0"
+    }
+}
