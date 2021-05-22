@@ -7,7 +7,7 @@ SourceMap files that can be uploaded to Azure DevOps Symbol server using the
 You configure your javascript build to 'stamp' or 'index' the .js files with a URL to the sourcemap from the azure devops symbol server and update the .js.map files to contain the unique client key of the symbol server url.
 
 ## 1. Stamping the sourcemaps
-### Option 1: WebPack
+### Stamp with WebPack
 If your project uses webpack, configuring this is pretty easy.
 Add the following to your `webpack.config.js` file:
 ```js
@@ -29,16 +29,7 @@ module.exports = {
 ```
 You have to configure the name of the organization to match. In the example above your azure devops url would be: `https://dev.azure.com/contoso`
 
-After this you can upload the symbols to the backend by adding the following yaml to your azure devops pipeline:
-```yml
-- task: PublishSymbols@2
-  displayName: Publish symbols
-  inputs:
-    SearchPattern: "**/dist/*.js.map"
-    SymbolServerType: TeamServices
-```
-
-### Option 2: Script
+### Stamp using Script
 If you don't use webpack you can add an extra step in your pipeline by using the cli tool:
 
 ```yml
