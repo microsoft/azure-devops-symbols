@@ -4,12 +4,63 @@ This repository contains tools and utilities for JavaScript projects to produce
 SourceMap files that can be uploaded to Azure DevOps Symbol server using the
 `PublishSymbols` task.
 
-As the maintainer of this project, please make a few updates:
+You configure your javascript build to 'stamp' or 'index' the .js files with a URL to the sourcemap from the azure devops symbol server and update the .js.map files to contain the unique client key of the symbol server url.
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+## 1. Stamping the sourcemaps
+### Option 1: WebPack
+If your project uses webpack, configuring this is pretty easy.
+Add the following to your `webpack.config.js` file:
+```js
+const { AzureDevOpsSymbolsPlugin } = require('azure-devops-symbols-webpack-plugin');
+
+...
+
+module.exports = {
+    ...
+    plugins: [
+        ...
+
+        new AzureDevOpsSymbolsPlugin({
+            organization: "contoso"
+        })
+    ],
+    ...
+};
+```
+You have to configure the name of the organization to match. In the example above your azure devops url would be: `https://dev.azure.com/contoso`
+
+After this you can upload the symbols to the backend by adding the following yaml to your azure devops pipeline:
+```yml
+- task: PublishSymbols@2
+  displayName: Publish symbols
+  inputs:
+    SearchPattern: "**/dist/*.js.map"
+    SymbolServerType: TeamServices
+```
+
+### Option 2: Script
+If you don't use webpack you can add an extra step in your pipeline by using the cli tool:
+
+```yml
+- script: |
+    npx azure-devops-symbols-sourcemap-cli --organization contoso
+  displayName: Stamp js sourcemaps
+```
+You have to configure the name of the organization to match. In the example above your azure devops url would be: `https://dev.azure.com/contoso`
+
+## Upload symbols
+You can use the standard [PublishSymbols](https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/symbols?view=azure-devops) task to upload symbols.
+
+> Note: This part is not yet implemented and we are working with the Azure DevOps team to get this incorporated
+
+```yml
+- task: PublishSymbols@2
+  displayName: Publish symbols
+  inputs:
+    SearchPattern: "**/dist/*.js.map"
+    SymbolServerType: TeamServices
+```
+
 
 ## Contributing
 

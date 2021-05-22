@@ -31,4 +31,4 @@ jobs:
         run: yarn ci
 
       - name: Publish
-        run: yarn run publish:beachball --yes --token ${{ secrets.NPM_TOKEN }}
+        run: npx --no-install beachball publish --yes --branch main --token ${{ secrets.NPM_TOKEN }}
