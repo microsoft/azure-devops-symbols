@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add missing chalk dependency for sourcemap-cli",
-  "packageName": "azure-devops-symbols-sourcemap-cli",
-  "email": "dannyvv@microsoft.com",
-  "dependentChangeType": "patch"
-}
