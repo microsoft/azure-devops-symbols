@@ -20,7 +20,7 @@
         ]
     },
     "devDependencies": {
-        "beachball": "^1.32.0",
-        "lage": "^0.24.0"
+        "beachball": "^2.4.0",
+        "lage": "^0.29.3"
     }
 }

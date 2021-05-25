@@ -1,0 +1,7 @@
+{
+  "type": "major",
+  "comment": "Initial Version",
+  "packageName": "azure-devops-symbols-webpack-plugin",
+  "email": "dannyvv@microsoft.com",
+  "dependentChangeType": "patch"
+}
