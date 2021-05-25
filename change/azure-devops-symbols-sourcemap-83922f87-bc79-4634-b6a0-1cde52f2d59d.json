@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add comment for the sourcemap client key field",
-  "packageName": "azure-devops-symbols-sourcemap",
-  "email": "dannyvv@microsoft.com",
-  "dependentChangeType": "patch"
-}

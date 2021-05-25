@@ -1,27 +1,27 @@
 {
-    "name": "azure-devops-symbols-sourcemap",
-    "version": "0.1.0-alpha",
-    "license": "MIT",
-    "main": "lib/index.js",
-    "scripts": {
-        "build": "bld-scripts build",
-        "lint": "bld-scripts lint",
-        "test": "bld-scripts test"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git@github.com:microsoft/azure-devops-symbols.git",
-        "directory": "packages/sourcemap"
-    },
-    "dependencies": {
-        "fs-extra": "^10.0.0",
-        "webpack-sources": "^2.1.1"
-    },
-    "devDependencies": {
-        "@types/fs-extra": "^9.0.11",
-        "@types/node": "^15.6.0",
-        "@types/webpack-sources": "^2.1.0",
-        "azure-devops-symbols-build-tools": "0.1.0-alpha",
-        "webpack": "^5.37.1"
-    }
+  "name": "azure-devops-symbols-sourcemap",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "bld-scripts build",
+    "lint": "bld-scripts lint",
+    "test": "bld-scripts test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:microsoft/azure-devops-symbols.git",
+    "directory": "packages/sourcemap"
+  },
+  "dependencies": {
+    "fs-extra": "^10.0.0",
+    "webpack-sources": "^2.1.1"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.11",
+    "@types/node": "^15.6.0",
+    "@types/webpack-sources": "^2.1.0",
+    "azure-devops-symbols-build-tools": "0.1.0-alpha",
+    "webpack": "^5.37.1"
+  }
 }

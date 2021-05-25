@@ -1,7 +1,0 @@
-{
-  "type": "major",
-  "comment": "Initial Version",
-  "packageName": "azure-devops-symbols-sourcemap-cli",
-  "email": "dannyvv@microsoft.com",
-  "dependentChangeType": "patch"
-}
