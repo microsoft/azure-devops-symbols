@@ -22,5 +22,11 @@
     "devDependencies": {
         "beachball": "^2.4.0",
         "lage": "^0.29.3"
+    },
+    "resolutions": {
+        "glob-parent": "5.1.2"
+    },
+    "resolutions-justification": {
+        "glob-parent": "CVE-2020-28469"
     }
 }
