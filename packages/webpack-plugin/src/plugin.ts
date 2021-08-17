@@ -2,7 +2,7 @@
 import * as webpackTypes from "webpack";
 import { ConcatSource, Source } from "webpack-sources";
 import * as path from "path";
-import { computeSourceMapUrlLine, sourceMapClientKeyField } from "azure-devops-symbols-sourcemap";
+import { computeSourceMapUrlLine, setClientKeyOnSourceMap } from "azure-devops-symbols-sourcemap";
 
 const pluginName = "AzureDevOpsSymbolsPlugin";
 
@@ -73,7 +73,7 @@ export class AzureDevOpsSymbolsPlugin
                                     const clientKey = <string>hash.digest("hex");
                             
                                     // Add the sourcemap client id field to the sourcemap json object.
-                                    (<any>sourceMap)[sourceMapClientKeyField] = clientKey;
+                                    setClientKeyOnSourceMap(clientKey, sourceMap);
 
                                     const sourceMapFileName = path.basename(file);
                                     const sourceMapLineToAppend = computeSourceMapUrlLine(this.organization, clientKey, sourceMapFileName);
