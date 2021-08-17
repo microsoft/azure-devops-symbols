@@ -1,8 +1,16 @@
 # Change Log - azure-devops-symbols-webpack-plugin
 
-This log was last generated on Tue, 17 Aug 2021 20:51:23 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Aug 2021 23:02:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.2.0
+
+Tue, 17 Aug 2021 23:02:22 GMT
+
+### Minor changes
+
+- Use the shared logic to make sure 'file' and 'soucemap client id' fields are in the beginning of the file to optimize the symbol upload costs (dannyvv@microsoft.com)
 
 ## 1.1.0
 

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Use the shared logic to make sure 'file' and 'soucemap client id' fields are in the beginning of the file to optimize the symbol upload costs",
-  "packageName": "azure-devops-symbols-webpack-plugin",
-  "email": "dannyvv@microsoft.com",
-  "dependentChangeType": "patch"
-}
