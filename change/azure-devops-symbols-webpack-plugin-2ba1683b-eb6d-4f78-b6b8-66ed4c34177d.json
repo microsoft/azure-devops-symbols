@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Bump package dependencies",
+  "packageName": "azure-devops-symbols-webpack-plugin",
+  "email": "dannyvv@microsoft.com",
+  "dependentChangeType": "patch"
+}
