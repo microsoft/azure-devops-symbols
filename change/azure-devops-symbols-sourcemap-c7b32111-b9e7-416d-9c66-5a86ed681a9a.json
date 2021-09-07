@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "use .js.map instead of .js to match azure devops behavior of using the symbol",
+  "packageName": "azure-devops-symbols-sourcemap",
+  "email": "dannyvv@microsoft.com",
+  "dependentChangeType": "patch"
+}
