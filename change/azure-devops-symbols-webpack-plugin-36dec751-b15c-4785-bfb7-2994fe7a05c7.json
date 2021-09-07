@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "use .js.map instead of .js to match azure devops behavior of using the symbol",
-  "packageName": "azure-devops-symbols-webpack-plugin",
-  "email": "dannyvv@microsoft.com",
-  "dependentChangeType": "patch"
-}

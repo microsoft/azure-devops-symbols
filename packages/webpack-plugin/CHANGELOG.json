@@ -2,6 +2,27 @@
   "name": "azure-devops-symbols-webpack-plugin",
   "entries": [
     {
+      "date": "Tue, 07 Sep 2021 21:08:24 GMT",
+      "tag": "azure-devops-symbols-webpack-plugin_v1.3.0",
+      "version": "1.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dannyvv@microsoft.com",
+            "package": "azure-devops-symbols-webpack-plugin",
+            "comment": "use .js.map instead of .js to match azure devops behavior of using the symbol",
+            "commit": "79bd3dc34d09dde1aaad91d2d8ddfd07a122991a"
+          },
+          {
+            "author": "dannyvv@microsoft.com",
+            "package": "azure-devops-symbols-webpack-plugin",
+            "commit": "79bd3dc34d09dde1aaad91d2d8ddfd07a122991a",
+            "comment": "Bump azure-devops-symbols-webpack-plugin to v1.3.0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 17 Aug 2021 23:02:22 GMT",
       "tag": "azure-devops-symbols-webpack-plugin_v1.2.0",
       "version": "1.2.0",

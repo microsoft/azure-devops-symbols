@@ -2,6 +2,21 @@
   "name": "azure-devops-symbols-sourcemap",
   "entries": [
     {
+      "date": "Tue, 07 Sep 2021 21:08:24 GMT",
+      "tag": "azure-devops-symbols-sourcemap_v1.2.0",
+      "version": "1.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dannyvv@microsoft.com",
+            "package": "azure-devops-symbols-sourcemap",
+            "comment": "use .js.map instead of .js to match azure devops behavior of using the symbol",
+            "commit": "79bd3dc34d09dde1aaad91d2d8ddfd07a122991a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 17 Aug 2021 20:51:23 GMT",
       "tag": "azure-devops-symbols-sourcemap_v1.1.0",
       "version": "1.1.0",

@@ -1,8 +1,16 @@
 # Change Log - azure-devops-symbols-sourcemap
 
-This log was last generated on Tue, 17 Aug 2021 20:51:23 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Sep 2021 21:08:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.2.0
+
+Tue, 07 Sep 2021 21:08:24 GMT
+
+### Minor changes
+
+- use .js.map instead of .js to match azure devops behavior of using the symbol (dannyvv@microsoft.com)
 
 ## 1.1.0
 

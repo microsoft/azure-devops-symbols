@@ -1,8 +1,17 @@
 # Change Log - azure-devops-symbols-webpack-plugin
 
-This log was last generated on Tue, 17 Aug 2021 23:02:22 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Sep 2021 21:08:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.3.0
+
+Tue, 07 Sep 2021 21:08:24 GMT
+
+### Minor changes
+
+- use .js.map instead of .js to match azure devops behavior of using the symbol (dannyvv@microsoft.com)
+- Bump azure-devops-symbols-webpack-plugin to v1.3.0 (dannyvv@microsoft.com)
 
 ## 1.2.0
 
