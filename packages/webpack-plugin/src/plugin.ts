@@ -75,7 +75,7 @@ export class AzureDevOpsSymbolsPlugin
                                     // Add the sourcemap client id field to the sourcemap json object.
                                     setClientKeyOnSourceMap(clientKey, sourceMap);
 
-                                    const sourceMapFileName = path.basename(file);
+                                    const sourceMapFileName = path.basename(file) + ".map";
                                     const sourceMapLineToAppend = computeSourceMapUrlLine(this.organization, clientKey, sourceMapFileName);
                                     
                                     compilation.updateAsset(asset.name, x => x, (info) => Object.assign(info, {related: {sourceMapLineToAppend: sourceMapLineToAppend}}));

@@ -56,6 +56,6 @@ export async function indexJsMapFileAsync(organization: string, hashAlgo: string
     await fsExtra.writeJSON(jsMapFile, sourceMap);
 
     console.log(`    Updating source file ${sourceFilePath}`);
-    const sourceMapUrlComment = computeSourceMapUrlLine(organization, clientKey, path.basename(sourceFilePath));
+    const sourceMapUrlComment = computeSourceMapUrlLine(organization, clientKey, path.basename(jsMapFile));
     await fsExtra.appendFile(sourceFilePath, sourceMapUrlComment);
 }
