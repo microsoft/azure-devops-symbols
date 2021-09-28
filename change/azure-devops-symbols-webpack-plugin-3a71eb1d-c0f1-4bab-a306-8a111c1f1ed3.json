@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Handle other plugins modifying the sourcemaps",
-  "packageName": "azure-devops-symbols-webpack-plugin",
-  "email": "dannyvv@microsoft.com",
-  "dependentChangeType": "patch"
-}
