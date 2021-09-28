@@ -1,8 +1,16 @@
 # Change Log - azure-devops-symbols-webpack-plugin
 
-This log was last generated on Tue, 07 Sep 2021 21:08:24 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Sep 2021 04:10:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.3.1
+
+Tue, 28 Sep 2021 04:10:57 GMT
+
+### Patches
+
+- Handle other plugins modifying the sourcemaps (dannyvv@microsoft.com)
 
 ## 1.3.0
 

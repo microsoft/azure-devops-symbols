@@ -2,6 +2,21 @@
   "name": "azure-devops-symbols-webpack-plugin",
   "entries": [
     {
+      "date": "Tue, 28 Sep 2021 04:10:57 GMT",
+      "tag": "azure-devops-symbols-webpack-plugin_v1.3.1",
+      "version": "1.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dannyvv@microsoft.com",
+            "package": "azure-devops-symbols-webpack-plugin",
+            "comment": "Handle other plugins modifying the sourcemaps",
+            "commit": "3219be47ad56c9895deccf303a51cc9ba48d283a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Sep 2021 21:08:24 GMT",
       "tag": "azure-devops-symbols-webpack-plugin_v1.3.0",
       "version": "1.3.0",
