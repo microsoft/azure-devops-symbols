@@ -1,6 +1,5 @@
 // Only use the static one for types, so that we can use the dynamic version of webpack we get from the plugin intialization
 import * as webpackTypes from "webpack";
-import { ConcatSource, Source } from "webpack-sources";
 import * as path from "path";
 import { computeSourceMapUrlLine, setClientKeyOnSourceMap } from "azure-devops-symbols-sourcemap";
 
@@ -46,7 +45,6 @@ export class AzureDevOpsSymbolsPlugin
             columns: cheap ? false : true,
         };
 
-
         compiler.hooks.compilation.tap(pluginName, 
             compilation => {
 
@@ -66,26 +64,29 @@ export class AzureDevOpsSymbolsPlugin
                             if (asset) {
                                 const sourceMap = asset.source.map(sourceMapOptions);
                                 if (sourceMap){
-                                    
                                     // Compute the hash of the sourcefile (before appending the sourceUrl comment)
                                     const hash = compiler.webpack.util.createHash(compilation.outputOptions.hashFunction || "md4")
                                     asset.source.updateHash(hash);
                                     const clientKey = <string>hash.digest("hex");
-                            
+
+                                    console.log(`Tagging sourcemap with ${clientKey} to ${asset.name}`);
+
                                     // Add the sourcemap client id field to the sourcemap json object.
                                     setClientKeyOnSourceMap(clientKey, sourceMap);
 
                                     const sourceMapFileName = path.basename(file) + ".map";
                                     const sourceMapLineToAppend = computeSourceMapUrlLine(this.organization, clientKey, sourceMapFileName);
                                     
-                                    compilation.updateAsset(asset.name, x => x, (info) => Object.assign(info, {related: {sourceMapLineToAppend: sourceMapLineToAppend}}));
-
-
+                                    const source = new webpack.sources.SourceMapSource(asset.source.buffer(), asset.name, sourceMap, undefined, undefined, true);
+                                    compilation.updateAsset(
+                                        asset.name,
+                                        source,
+                                        info => Object.assign(info, {adoSourecMapEnabled: true, related: {sourceMapLineToAppend: sourceMapLineToAppend, clientKey: clientKey}})
+                                    );
                                 }
                             }
                         }
                     });
-
 
                     compilation.hooks.processAssets.tapPromise(
                         {
@@ -95,20 +96,19 @@ export class AzureDevOpsSymbolsPlugin
                         },
                         async (assets) => {
                             for (const file of Object.keys(assets)) {
-
                                 let asset = compilation.getAsset(file);
                                 if (asset && asset.info.related && asset.info.related.sourceMapLineToAppend) {
-                                    console.log("Adding comment");
+                                    console.log(`Adding SourceMap comment to ${asset.name}`);
                                     const content = <string>asset.info.related.sourceMapLineToAppend;
+
                                     compilation.updateAsset(
                                         file, 
-                                        <any>((source: Source) => new ConcatSource(source, content)), 
-                                        {}
+                                        source => new webpack.sources.ConcatSource(source, content), 
+                                        undefined
                                     );
                                 }
                             }
-                        }
-                );
+                        });
             });
     }
 }
