@@ -109,6 +109,17 @@ export class AzureDevOpsSymbolsPlugin
                                 }
                             }
                         });
+
+                    compilation.hooks.statsPrinter.tap(
+                        {
+                            name: pluginName,
+                        },
+                        stats => {
+                            const id = (x: string) => x
+                            stats.hooks.print
+                                .for("asset.info.related.sourceMapLineToAppend")
+                                .tap(pluginName, (sourceMapLineToAppend, {cyan, formatFlag}) => sourceMapLineToAppend ? (cyan || id) ( (formatFlag || id) ("azure sourcemap")) : "");
+                        });
             });
     }
 }
