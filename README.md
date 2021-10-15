@@ -39,19 +39,57 @@ If you don't use webpack you can add an extra step in your pipeline by using the
 ```
 You have to configure the name of the organization to match. In the example above your azure devops url would be: `https://dev.azure.com/contoso`
 
-## 2. Upload symbols
+### Do it yourself
+Both the two approaches above are helpers for a relatively simple process.
+
+#### Add sourcemap link to the .js file
+The `sample.js` file needs to have the sourcemap comment added at the end of the file with the following format.
+```
+//# sourceMappingURL=https://artifacts.dev.azure.com/<myProject>/_apis/symbol/symsrv/<sourcemapFileName>/<uniqueId>/<sourcemapFileName>
+```
+You'll have to replace `<myproject>` with the name of your project i.e. microsoft in the case of https://dev.azure.com/microsoft or https://microsoft.visualstudio.com.
+`<sourcemapFileName> ` is the name of the sourcemap file i.e. `sample.js.map`.
+`<uniqueId>` must be a unique id and it is up to you to choose a good value. A recommendation would be to hash the source file to have a deterministic build output.
+If that is not a concern for you you could also just create a new GUID/UUID. 
+In the cases mentioned above, the WebPack plugin relies on the internal hash that webpack computes and the cli script computes the sha256 content hash of the javascript file.
+
+for example:
+```
+//# sourceMappingURL=https://artifacts.dev.azure.com/microsoft/_apis/symbol/symsrv/sample.js.map/583f03be-8580-4934-bb55-d3d0460a7921/sample.js.map
+```
+
+#### Declare the unique in the sourcemap
+To support the symbol uploader to do the linking we'll have to add the `<uniqueId>` value computed for the .js file in the json file of the sourcemap.
+To match the example you will have to add the following top-level field to `sample.js.map` json file.
+```
+"x_microsoft_symbol_client_key":"583f03be-8580-4934-bb55-d3d0460a7921",
+```
+
+## 2. Uploading symbols
 You can use the standard [PublishSymbols](https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/symbols?view=azure-devops) task to upload symbols.
 
-> Note: This part is not yet implemented and we are working with the Azure DevOps team to get this incorporated
+> Note: This part is implmemented (#15259)[https://github.com/microsoft/azure-pipelines-tasks/pull/15259] but not yet fully deployed. We are working with the Azure DevOps team to get this rolled out to production.
 
+When deployed the following yaml will 
 ```yml
 - task: PublishSymbols@2
   displayName: Publish symbols
   inputs:
     SearchPattern: "**/dist/*.js.map"
     SymbolServerType: TeamServices
+    IndexableFileFormats: SourceMap
 ```
+> Note: The PublishSymbols task only rusn on Windows VM's so if your build runs on unix or mac, you'll have to publish the sourcemap (.js.map) files to a pipeline artifact and add an extra job to your pipeline to pull those and then call this task on a windows vm.
 
+### In the mean time...
+Since the backend has been deployed already you can enable sourcemaps by setting an evironment variable in the pipline instead of passing the flag to the task.
+```yml
+variables:
+  - name: ArtifactServices.Symbol.IndexableFileFormats
+    value: SourceMap
+```
+and ommit the `IndexableFileFormats` field from the `PublishSymbols` task.
+> Disclaimer: This environment variable will be removed as soon as the task supports the extra field.
 
 ## Contributing
 
