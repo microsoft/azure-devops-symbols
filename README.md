@@ -81,16 +81,6 @@ When deployed the following yaml will
 ```
 > Note: The PublishSymbols task only rusn on Windows VM's so if your build runs on unix or mac, you'll have to publish the sourcemap (.js.map) files to a pipeline artifact and add an extra job to your pipeline to pull those and then call this task on a windows vm.
 
-### In the mean time...
-Since the backend has been deployed already you can enable sourcemaps by setting an evironment variable in the pipline instead of passing the flag to the task.
-```yml
-variables:
-  - name: ArtifactServices.Symbol.IndexableFileFormats
-    value: SourceMap
-```
-and ommit the `IndexableFileFormats` field from the `PublishSymbols` task.
-> Disclaimer: This environment variable will be removed as soon as the task supports the extra field.
-
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
