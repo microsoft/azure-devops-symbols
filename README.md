@@ -47,7 +47,7 @@ The `sample.js` file needs to have the sourcemap comment added at the end of the
 ```
 //# sourceMappingURL=https://artifacts.dev.azure.com/<myProject>/_apis/symbol/symsrv/<sourcemapFileName>/<uniqueId>/<sourcemapFileName>
 ```
-You'll have to replace `<myproject>` with the name of your project i.e. microsoft in the case of https://dev.azure.com/microsoft or https://microsoft.visualstudio.com.
+You'll have to replace `<myproject>` with the name of your project i.e. contoso in the case of https://dev.azure.com/contoso or https://contoso.visualstudio.com.
 `<sourcemapFileName> ` is the name of the sourcemap file i.e. `sample.js.map`.
 `<uniqueId>` must be a unique id and it is up to you to choose a good value. A recommendation would be to hash the source file to have a deterministic build output.
 If that is not a concern for you you could also just create a new GUID/UUID. 
@@ -55,7 +55,7 @@ In the cases mentioned above, the WebPack plugin relies on the internal hash tha
 
 for example:
 ```
-//# sourceMappingURL=https://artifacts.dev.azure.com/microsoft/_apis/symbol/symsrv/sample.js.map/583f03be-8580-4934-bb55-d3d0460a7921/sample.js.map
+//# sourceMappingURL=https://artifacts.dev.azure.com/contoso/_apis/symbol/symsrv/sample.js.map/583f03be-8580-4934-bb55-d3d0460a7921/sample.js.map
 ```
 
 #### Declare the unique in the sourcemap
