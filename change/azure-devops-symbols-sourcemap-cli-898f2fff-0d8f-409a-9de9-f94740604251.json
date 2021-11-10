@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Print status of patched files",
+  "packageName": "azure-devops-symbols-sourcemap-cli",
+  "email": "dannyvv@microsoft.com",
+  "dependentChangeType": "patch"
+}
