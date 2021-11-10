@@ -11,7 +11,6 @@ function fail(message: string): never {
   process.exit(1);
 }
 
-
 const argv = yargs.options({
   organization: {
     type: 'string',
@@ -34,11 +33,11 @@ const argv = yargs.options({
   },
 }).argv;
 
-
 async function run(directory: string, organization: string, globPattern: string, hashAlgo: string) : Promise<void>{
   const jsMapFiles = glob.sync(path.join(directory, globPattern));
   
   for (var jsMapFile of jsMapFiles) {
+    console.log(`Indexing ${jsMapFile}`)
     await indexJsMapFileAsync(organization, hashAlgo, jsMapFile);
   }
 }
