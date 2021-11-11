@@ -1,5 +1,9 @@
 # azure-devops-symbols
 
+Enable seemless debugging of your JavaScript code regardless of how you distribute your code. 
+The tools in this repo will allow you to store the SourceMap _(.js.map)_ file in Azure DevOps 
+where it is safely stored and ready for use by our debuggers.
+
 This repository contains tools and utilities for JavaScript projects to produce
 SourceMap files that can be uploaded to Azure DevOps Symbol server using the
 `PublishSymbols` task.
