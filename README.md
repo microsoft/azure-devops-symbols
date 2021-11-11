@@ -7,7 +7,7 @@ SourceMap files that can be uploaded to Azure DevOps Symbol server using the
 You configure your javascript build to 'stamp' or 'index' the .js files with a URL to the sourcemap from the azure devops symbol server and update the .js.map files to contain the unique client key of the symbol server url.
 
 ## 1. Stamping the sourcemaps
-### Stamp with WebPack
+### option a) Stamp with WebPack
 If your project uses webpack, configuring this is pretty easy.
 Add the following to your `webpack.config.js` file:
 ```js
@@ -29,7 +29,7 @@ module.exports = {
 ```
 You have to configure the name of the organization to match. In the example above your azure devops url would be: `https://dev.azure.com/contoso`
 
-### Stamp using Script
+### option b) Stamp using cli script
 If you don't use webpack you can add an extra step in your pipeline by using the cli tool:
 
 ```yml
@@ -39,10 +39,10 @@ If you don't use webpack you can add an extra step in your pipeline by using the
 ```
 You have to configure the name of the organization to match. In the example above your azure devops url would be: `https://dev.azure.com/contoso`
 
-### Do it yourself
+### option c) Do it yourself
 Both the two approaches above are helpers for a relatively simple process.
 
-#### Add sourcemap link to the .js file
+Step 1. **Add sourcemap link to the .js file**
 The `sample.js` file needs to have the sourcemap comment added at the end of the file with the following format.
 ```
 //# sourceMappingURL=https://artifacts.dev.azure.com/<myProject>/_apis/symbol/symsrv/<sourcemapFileName>/<uniqueId>/<sourcemapFileName>
@@ -58,7 +58,7 @@ for example:
 //# sourceMappingURL=https://artifacts.dev.azure.com/contoso/_apis/symbol/symsrv/sample.js.map/583f03be-8580-4934-bb55-d3d0460a7921/sample.js.map
 ```
 
-#### Declare the unique in the sourcemap
+Step 2. **Declare the unique in the sourcemap**
 To support the symbol uploader to do the linking we'll have to add the `<uniqueId>` value computed for the .js file in the json file of the sourcemap.
 To match the example you will have to add the following top-level field to `sample.js.map` json file.
 ```
