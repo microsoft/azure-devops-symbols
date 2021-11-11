@@ -72,9 +72,7 @@ To match the example you will have to add the following top-level field to `samp
 ## 2. Uploading symbols
 You can use the standard [PublishSymbols](https://docs.microsoft.com/en-us/azure/devops/pipelines/artifacts/symbols?view=azure-devops) task to upload symbols.
 
-> Note: This part is implmemented (#15259)[https://github.com/microsoft/azure-pipelines-tasks/pull/15259] but not yet fully deployed. We are working with the Azure DevOps team to get this rolled out to production.
-
-When deployed the following yaml will 
+All you need is to add this yaml to your pipeline, you might have to update the SearchPattern to math your layout.
 ```yml
 - task: PublishSymbols@2
   displayName: Publish symbols
