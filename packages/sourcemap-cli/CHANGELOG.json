@@ -2,6 +2,21 @@
   "name": "azure-devops-symbols-sourcemap-cli",
   "entries": [
     {
+      "date": "Thu, 11 Nov 2021 18:46:06 GMT",
+      "tag": "azure-devops-symbols-sourcemap-cli_v1.2.0",
+      "version": "1.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dannyvv@microsoft.com",
+            "package": "azure-devops-symbols-sourcemap-cli",
+            "commit": "47090dafaa6f822e7a3941b2eae2c6d38697a112",
+            "comment": "Print status of patched files"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Sep 2021 21:08:24 GMT",
       "tag": "azure-devops-symbols-sourcemap-cli_v1.1.1",
       "version": "1.1.1",
