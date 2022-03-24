@@ -1,33 +1,23 @@
-// Only use the static one for types, so that we can use the dynamic version of webpack we get from the plugin intialization
-import * as webpackTypes from "webpack";
-import * as webpackSources from "webpack-sources";
-import * as path from "path";
-import {
-  computeSourceMapUrlLine,
-  setClientKeyOnSourceMap,
-} from "azure-devops-symbols-sourcemap";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.AzureDevOpsSymbolsPlugin = void 0;
+const webpackSources = require("webpack-sources");
+const path = require("path");
+const azure_devops_symbols_sourcemap_1 = require("azure-devops-symbols-sourcemap");
 //import { Compilation } from "webpack";
 const crypto = require("crypto");
-
 const pluginName = "AzureDevOpsSymbolsPlugin";
-
-export interface AzureDevOpsSymbolsPluginOptions {
-  organization: string;
-}
-
 /**
  * This is the plugin version which is compatible with Webpack v4
  */
-export class AzureDevOpsSymbolsPlugin {
-  organization: string = "<Organization>";
-
-  constructor(options?: AzureDevOpsSymbolsPluginOptions) {
+class AzureDevOpsSymbolsPlugin {
+  constructor(options) {
+    this.organization = "<Organization>";
     if (options) {
       this.organization = options.organization;
     }
   }
-
-  apply(compiler: webpackTypes.Compiler) {
+  apply(compiler) {
     const options = compiler.options;
     // If we don't have source-map as a dev-tool this plugin doesn't need to do anything
     if (!options.devtool || !options.devtool.includes("source-map")) {
@@ -36,14 +26,12 @@ export class AzureDevOpsSymbolsPlugin {
       );
       return;
     }
-
     const hidden = options.devtool.includes("hidden");
     if (!hidden) {
       throw new Error(
         `When using plugin ${pluginName} you must set 'hidden' on the 'devtool' settings to true. To avoid declaring two sourcemap comments.`
       );
     }
-
     // The options we pass to extract the source map must match exactly what SourceMapDevToolPlugin
     // does internally, because else when we ask to get the sourcemap object we get a newly
     // computed one with differnt options, so when we add the extra fields, they won't be
@@ -54,7 +42,6 @@ export class AzureDevOpsSymbolsPlugin {
       module: moduleMaps ? true : cheap ? false : true,
       columns: cheap ? false : true,
     };
-
     compiler.hooks.compilation.tap(pluginName, (compilation) => {
       // Register a hook just before CommonJsChunkFormatPlugin runs
       // and add field to the .js.map sourceMap file that contains the
@@ -62,31 +49,31 @@ export class AzureDevOpsSymbolsPlugin {
       // should push the symbols.
       compilation.hooks.afterOptimizeAssets.tap(pluginName, (assets) => {
         for (const file of Object.keys(assets)) {
-          let asset = compilation.assets[file] as any; // Is a webpackSources.SourceMapSource, but I was fiddling with this in JS, not TS - so casting as any so it'll compile for you
+          let asset = compilation.assets[file];
           if (asset) {
-            const sourceMap = asset.map(sourceMapOptions) as any;
+            const sourceMap = asset.map(sourceMapOptions);
             if (sourceMap) {
               // Compute the hash of the sourcefile (before appending the sourceUrl comment)
               const hash = crypto.createHash(
                 compilation.outputOptions.hashFunction || "md4"
               );
               asset.updateHash(hash);
-              const clientKey = <string>hash.digest("hex");
-
+              const clientKey = hash.digest("hex");
               console.log(
                 `Tagging sourcemap with ${clientKey} to ${asset._name}`
               );
-
               // Add the sourcemap client id field to the sourcemap json object.
-              setClientKeyOnSourceMap(clientKey, sourceMap);
-
+              (0, azure_devops_symbols_sourcemap_1.setClientKeyOnSourceMap)(
+                clientKey,
+                sourceMap
+              );
               const sourceMapFileName = path.basename(file) + ".map";
-              const sourceMapLineToAppend = computeSourceMapUrlLine(
+              const sourceMapLineToAppend = (0,
+              azure_devops_symbols_sourcemap_1.computeSourceMapUrlLine)(
                 this.organization,
                 clientKey,
                 sourceMapFileName
               );
-
               const source = new webpackSources.SourceMapSource(
                 asset.source(),
                 asset._name,
@@ -95,54 +82,47 @@ export class AzureDevOpsSymbolsPlugin {
                 undefined,
                 true
               );
-              compilation.updateAsset(
-                asset._name,
-                source as any,
-                (info) =>
-                  Object.assign(info, {
-                    adoSourecMapEnabled: true,
-                    related: {
-                      sourceMapLineToAppend: sourceMapLineToAppend,
-                      clientKey: clientKey,
-                    },
-                  }) as any
+              compilation.updateAsset(asset._name, source, (info) =>
+                Object.assign(info, {
+                  adoSourecMapEnabled: true,
+                  related: {
+                    sourceMapLineToAppend: sourceMapLineToAppend,
+                    clientKey: clientKey,
+                  },
+                })
               );
-
-              /* Since I couldn't find proper info about the stages etc. - I don't actually know what's going on
-                 I could tell the source map assets were already created at afterOptimizeAssets, 
-                 so I added the source map line here. Which makes storing it on the info redundant :D
-                 I guess I could tap all hooks and have them console.log to get an understanding of the order..
-              */
               compilation.updateAsset(
                 file,
                 (source) =>
                   new webpackSources.ConcatSource(
                     source.toString(),
                     sourceMapLineToAppend
-                  ) as any,
+                  ),
                 undefined
               );
+              compilation.assets[file] = source;
             }
           }
         }
       });
-    });
 
-    //   compilation.hooks.statsPrinter.tap(
-    //     {
-    //       name: pluginName,
-    //     },
-    //     (stats) => {
-    //       const id = (x: string) => x;
-    //       stats.hooks.print
-    //         .for("asset.info.related.sourceMapLineToAppend")
-    //         .tap(pluginName, (sourceMapLineToAppend, { cyan, formatFlag }) =>
-    //           sourceMapLineToAppend
-    //             ? (cyan || id)((formatFlag || id)("azure sourcemap"))
-    //             : ""
-    //         );
-    //     }
-    //   );
-    // });
+      //   compilation.hooks.statsPrinter.tap(
+      //     {
+      //       name: pluginName,
+      //     },
+      //     (stats) => {
+      //       const id = (x: string) => x;
+      //       stats.hooks.print
+      //         .for("asset.info.related.sourceMapLineToAppend")
+      //         .tap(pluginName, (sourceMapLineToAppend, { cyan, formatFlag }) =>
+      //           sourceMapLineToAppend
+      //             ? (cyan || id)((formatFlag || id)("azure sourcemap"))
+      //             : ""
+      //         );
+      //     }
+      //   );
+    });
   }
 }
+exports.AzureDevOpsSymbolsPlugin = AzureDevOpsSymbolsPlugin;
+//# sourceMappingURL=plugin.js.map
