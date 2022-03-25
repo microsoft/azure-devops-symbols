@@ -10,7 +10,7 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:microsoft/azure-devops-symbols.git",
-    "directory": "packages/webpack-plugin"
+    "directory": "packages/webpack4-plugin"
   },
   "dependencies": {
     "azure-devops-symbols-sourcemap": "1.2.0",
