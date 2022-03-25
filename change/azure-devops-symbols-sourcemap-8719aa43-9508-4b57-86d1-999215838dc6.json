@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Remove webpack references from azure-devops-symbols-sourcemap",
+  "packageName": "azure-devops-symbols-sourcemap",
+  "email": "dannyvv@microsoft.com",
+  "dependentChangeType": "patch"
+}
