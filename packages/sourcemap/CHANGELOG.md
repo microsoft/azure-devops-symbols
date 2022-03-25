@@ -1,8 +1,16 @@
 # Change Log - azure-devops-symbols-sourcemap
 
-This log was last generated on Tue, 07 Sep 2021 21:08:24 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Mar 2022 15:57:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.2.1
+
+Fri, 25 Mar 2022 15:57:32 GMT
+
+### Patches
+
+- Remove webpack references from azure-devops-symbols-sourcemap (dannyvv@microsoft.com)
 
 ## 1.2.0
 
