@@ -4,7 +4,7 @@ exports.AzureDevOpsSymbolsPlugin = void 0;
 const webpackSources = require("webpack-sources");
 const path = require("path");
 const azure_devops_symbols_sourcemap_1 = require("azure-devops-symbols-sourcemap");
-//import { Compilation } from "webpack";
+const webpack = require("webpack");
 const crypto = require("crypto");
 const pluginName = "AzureDevOpsSymbolsPlugin";
 /**
@@ -42,69 +42,89 @@ class AzureDevOpsSymbolsPlugin {
       module: moduleMaps ? true : cheap ? false : true,
       columns: cheap ? false : true,
     };
+
     compiler.hooks.compilation.tap(pluginName, (compilation) => {
       // Register a hook just before CommonJsChunkFormatPlugin runs
       // and add field to the .js.map sourceMap file that contains the
       // symbol client key to which the Azure DevOps symbol upload task
       // should push the symbols.
-      compilation.hooks.afterOptimizeAssets.tap(pluginName, (assets) => {
-        for (const file of Object.keys(assets)) {
-          let asset = compilation.assets[file];
-          if (asset) {
-            const sourceMap = asset.map(sourceMapOptions);
-            if (sourceMap) {
-              // Compute the hash of the sourcefile (before appending the sourceUrl comment)
-              const hash = crypto.createHash(
-                compilation.outputOptions.hashFunction || "md4"
-              );
-              asset.updateHash(hash);
-              const clientKey = hash.digest("hex");
-              console.log(
-                `Tagging sourcemap with ${clientKey} to ${asset._name}`
-              );
-              // Add the sourcemap client id field to the sourcemap json object.
-              (0, azure_devops_symbols_sourcemap_1.setClientKeyOnSourceMap)(
-                clientKey,
-                sourceMap
-              );
-              const sourceMapFileName = path.basename(file) + ".map";
-              const sourceMapLineToAppend = (0,
-              azure_devops_symbols_sourcemap_1.computeSourceMapUrlLine)(
-                this.organization,
-                clientKey,
-                sourceMapFileName
-              );
-              const source = new webpackSources.SourceMapSource(
-                asset.source(),
-                asset._name,
-                sourceMap,
-                undefined,
-                undefined,
-                true
-              );
-              compilation.updateAsset(asset._name, source, (info) =>
-                Object.assign(info, {
-                  adoSourecMapEnabled: true,
-                  related: {
-                    sourceMapLineToAppend: sourceMapLineToAppend,
-                    clientKey: clientKey,
-                  },
-                })
-              );
-              compilation.updateAsset(
-                file,
-                (source) =>
+      compilation.hooks.afterOptimizeAssets.tap(
+        {
+          name: pluginName,
+          // This should run just before the CommonJsChunkFormatPlugin runs
+        },
+        (assets) => {
+          for (const file of Object.keys(assets)) {
+            let asset = compilation.getAsset(file);
+            if (asset) {
+              const sourceMap = asset.source.map(sourceMapOptions);
+              if (sourceMap) {
+                // Compute the hash of the sourcefile (before appending the sourceUrl comment)
+                const hash = crypto.createHash(
+                  compilation.outputOptions.hashFunction || "md4"
+                );
+                asset.source.updateHash(hash);
+                const clientKey = hash.digest("hex");
+                console.log(
+                  `Tagging sourcemap with ${clientKey} to ${asset.name}`
+                );
+                // Add the sourcemap client id field to the sourcemap json object
+                (0, azure_devops_symbols_sourcemap_1.setClientKeyOnSourceMap)(
+                  clientKey,
+                  sourceMap
+                );
+                const sourceMapFileName = path.basename(file) + ".map";
+                const sourceMapLineToAppend = (0,
+                azure_devops_symbols_sourcemap_1.computeSourceMapUrlLine)(
+                  this.organization,
+                  clientKey,
+                  sourceMapFileName
+                );
+                const sourceWithMapLineAppended =
                   new webpackSources.ConcatSource(
-                    source.toString(),
+                    asset.source.source(),
                     sourceMapLineToAppend
-                  ),
-                undefined
-              );
-              compilation.assets[file] = source;
+                  );
+                const assetWithClientKeyOnSourceMap =
+                  new webpackSources.SourceMapSource(
+                    sourceWithMapLineAppended.source(),
+                    asset.name,
+                    sourceMap, // Note: this seems to have no affect on the output .map file
+                    undefined,
+                    undefined,
+                    true
+                  );
+                compilation.updateAsset(
+                  asset.name,
+                  assetWithClientKeyOnSourceMap,
+                  undefined
+                );
+
+                // Update the sourcemap with the metadata
+                // No idea why updating the source map associated with the actual .js file has no effect - I'd think it would
+                const sourceMapAssetName = file + ".map";
+                const actualSourceMapAsset =
+                  compilation.getAsset(sourceMapAssetName);
+                const actualSource = JSON.parse(
+                  actualSourceMapAsset.source.source()
+                );
+                if (actualSourceMapAsset) {
+                  // Add the sourcemap client id field to the sourcemap json object.
+                  (0, azure_devops_symbols_sourcemap_1.setClientKeyOnSourceMap)(
+                    clientKey,
+                    actualSource
+                  );
+                  //
+                  compilation.updateAsset(
+                    sourceMapAssetName,
+                    new webpackSources.RawSource(JSON.stringify(actualSource))
+                  );
+                }
+              }
             }
           }
         }
-      });
+      );
 
       //   compilation.hooks.statsPrinter.tap(
       //     {

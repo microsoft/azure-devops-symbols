@@ -6,8 +6,7 @@ import {
   computeSourceMapUrlLine,
   setClientKeyOnSourceMap,
 } from "azure-devops-symbols-sourcemap";
-//import { Compilation } from "webpack";
-const crypto = require("crypto");
+const webpack = require("webpack");
 
 const pluginName = "AzureDevOpsSymbolsPlugin";
 
@@ -46,7 +45,7 @@ export class AzureDevOpsSymbolsPlugin {
 
     // The options we pass to extract the source map must match exactly what SourceMapDevToolPlugin
     // does internally, because else when we ask to get the sourcemap object we get a newly
-    // computed one with differnt options, so when we add the extra fields, they won't be
+    // computed one with different options, so when we add the extra fields, they won't be
     // in the final .js.map file
     const cheap = options.devtool.includes("cheap");
     const moduleMaps = options.devtool.includes("module");
@@ -62,66 +61,72 @@ export class AzureDevOpsSymbolsPlugin {
       // should push the symbols.
       compilation.hooks.afterOptimizeAssets.tap(pluginName, (assets) => {
         for (const file of Object.keys(assets)) {
-          let asset = compilation.assets[file] as any; // Is a webpackSources.SourceMapSource, but I was fiddling with this in JS, not TS - so casting as any so it'll compile for you
+          let asset = compilation.getAsset(file);
           if (asset) {
-            const sourceMap = asset.map(sourceMapOptions) as any;
+            const sourceMap = asset.source.map(
+              sourceMapOptions
+            ) as webpackSources.SourceMapSource;
             if (sourceMap) {
               // Compute the hash of the sourcefile (before appending the sourceUrl comment)
-              const hash = crypto.createHash(
+              const hash = webpack.util.createHash(
                 compilation.outputOptions.hashFunction || "md4"
               );
-              asset.updateHash(hash);
+              asset.source.updateHash(hash);
               const clientKey = <string>hash.digest("hex");
 
               console.log(
-                `Tagging sourcemap with ${clientKey} to ${asset._name}`
+                `Tagging sourcemap with ${clientKey} to ${asset.name}`
               );
 
               // Add the sourcemap client id field to the sourcemap json object.
               setClientKeyOnSourceMap(clientKey, sourceMap);
-
               const sourceMapFileName = path.basename(file) + ".map";
               const sourceMapLineToAppend = computeSourceMapUrlLine(
                 this.organization,
                 clientKey,
                 sourceMapFileName
               );
-
-              const source = new webpackSources.SourceMapSource(
-                asset.source(),
-                asset._name,
-                sourceMap,
-                undefined,
-                undefined,
-                true
+              const sourceWithMapLineAppended = new webpackSources.ConcatSource(
+                // @ts-ignore - this is correct for Webpack v4. There's a webpack-sources mismatch
+                asset.source.source(),
+                sourceMapLineToAppend
               );
+              const assetWithClientKeyOnSourceMap =
+                new webpackSources.SourceMapSource(
+                  sourceWithMapLineAppended.source(),
+                  asset.name,
+                  // @ts-ignore is fine for Webpack v4
+                  sourceMap, // Note: this seems to have no affect on the output .map file
+                  undefined,
+                  undefined,
+                  true
+                );
               compilation.updateAsset(
-                asset._name,
-                source as any,
-                (info) =>
-                  Object.assign(info, {
-                    adoSourecMapEnabled: true,
-                    related: {
-                      sourceMapLineToAppend: sourceMapLineToAppend,
-                      clientKey: clientKey,
-                    },
-                  }) as any
-              );
-
-              /* Since I couldn't find proper info about the stages etc. - I don't actually know what's going on
-                 I could tell the source map assets were already created at afterOptimizeAssets, 
-                 so I added the source map line here. Which makes storing it on the info redundant :D
-                 I guess I could tap all hooks and have them console.log to get an understanding of the order..
-              */
-              compilation.updateAsset(
-                file,
-                (source) =>
-                  new webpackSources.ConcatSource(
-                    source.toString(),
-                    sourceMapLineToAppend
-                  ) as any,
+                asset.name,
+                // @ts-ignore is fine for Webpack v4
+                assetWithClientKeyOnSourceMap,
                 undefined
               );
+
+              // Update the sourcemap with the metadata
+              // No idea why updating the source map associated with the actual .js file has no effect - I'd think it would
+              const sourceMapAssetName = file + ".map";
+              const actualSourceMapAsset =
+                compilation.getAsset(sourceMapAssetName);
+              const actualSource = JSON.parse(
+                // @ts-ignore - this is correct for Webpack v4
+                actualSourceMapAsset.source.source()
+              );
+              if (actualSourceMapAsset) {
+                // Add the sourcemap client id field to the sourcemap json object.
+                setClientKeyOnSourceMap(clientKey, actualSource);
+
+                compilation.updateAsset(
+                  sourceMapAssetName,
+                  // @ts-ignore - this is correct for Webpack v4
+                  new webpackSources.RawSource(JSON.stringify(actualSource))
+                );
+              }
             }
           }
         }
