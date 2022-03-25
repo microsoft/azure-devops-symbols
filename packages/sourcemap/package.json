@@ -20,8 +20,6 @@
   "devDependencies": {
     "@types/fs-extra": "^9.0.12",
     "@types/node": "^15.6.0",
-    "@types/webpack-sources": "^2.1.0",
-    "azure-devops-symbols-build-tools": "0.1.0",
-    "webpack": "^5.50.0"
+    "azure-devops-symbols-build-tools": "0.1.0"
   }
 }
