@@ -33,6 +33,14 @@ module.exports = {
 ```
 You have to configure the name of the organization to match. In the example above your azure devops url would be: `https://dev.azure.com/contoso`
 
+#### Webpack v4 compatible plugin
+For Webpack v4 you should use 
+```js
+const { AzureDevOpsSymbolsPlugin } = require('azure-devops-symbols-webpack4-plugin');
+```
+
+Note that the plugin doesn't work when combined with the Webpack v4 compatible [webpack-subresource-integrity](https://www.npmjs.com/package/webpack-subresource-integrity) plugin.
+
 ### option b) Stamp using cli script
 If you don't use webpack you can add an extra step in your pipeline by using the cli tool:
 
