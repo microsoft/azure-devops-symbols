@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add a plugin for webpack4 ",
+  "packageName": "azure-devops-symbols-webpack4-plugin",
+  "email": "dannyvv@microsoft.com",
+  "dependentChangeType": "patch"
+}
