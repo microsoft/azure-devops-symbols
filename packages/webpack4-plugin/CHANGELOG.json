@@ -1,0 +1,26 @@
+{
+  "name": "azure-devops-symbols-webpack4-plugin",
+  "entries": [
+    {
+      "date": "Tue, 29 Mar 2022 18:59:05 GMT",
+      "tag": "azure-devops-symbols-webpack4-plugin_v1.0.1",
+      "version": "1.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "dannyvv@microsoft.com",
+            "package": "azure-devops-symbols-webpack4-plugin",
+            "commit": "be3bf6067a00c71ecb04acd40d6a8317c659c458",
+            "comment": "Add a plugin for webpack4 "
+          },
+          {
+            "author": "beachball",
+            "package": "azure-devops-symbols-webpack4-plugin",
+            "comment": "Bump azure-devops-symbols-sourcemap to v1.2.1",
+            "commit": "be3bf6067a00c71ecb04acd40d6a8317c659c458"
+          }
+        ]
+      }
+    }
+  ]
+}
