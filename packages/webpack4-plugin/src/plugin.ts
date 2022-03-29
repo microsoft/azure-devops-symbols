@@ -30,7 +30,7 @@ export class AzureDevOpsSymbolsPlugin {
     // If we don't have source-map as a dev-tool this plugin doesn't need to do anything
     if (
       !options.devtool ||
-      options.devtool === true ||
+      (<any>options.devtool) === true ||
       !options.devtool.includes("source-map")
     ) {
       console.log(
