@@ -71,12 +71,15 @@ You have to configure the name of the organization to match. In the example abov
 Both the two approaches above are helpers for a relatively simple process.
 
 Step 1. **Add sourcemap link to the .js file** (only needed for the `sourceMappingUrl`-stamping flavor)
+
 The `sample.js` file needs to have the sourcemap comment added at the end of the file with the following format.
 ```
 //# sourceMappingURL=https://artifacts.dev.azure.com/<myProject>/_apis/symbol/symsrv/<sourcemapFileName>/<uniqueId>/<sourcemapFileName>
 ```
 You'll have to replace `<myproject>` with the name of your project i.e. contoso in the case of https://dev.azure.com/contoso or https://contoso.visualstudio.com.
+
 `<sourcemapFileName> ` is the name of the sourcemap file i.e. `sample.js.map`.
+
 `<uniqueId>` must be a unique id and it is up to you to choose a good value. A recommendation would be to hash the source file to have a deterministic build output.
 If that is not a concern for you you could also just create a new GUID/UUID. 
 In the cases mentioned above, the WebPack plugin relies on the internal hash that webpack computes and the cli script computes the sha256 content hash of the Javascript file.
@@ -87,6 +90,7 @@ for example:
 ```
 
 Step 2. **Declare the unique in the sourcemap**
+
 To support the symbol uploader to do the linking we'll have to add the `<uniqueId>` value computed for the .js file in the json file of the sourcemap.
 To match the example you will have to add the following top-level field to `sample.js.map` json file.
 ```
