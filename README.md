@@ -11,9 +11,11 @@ SourceMap files that can be uploaded to Azure DevOps Symbol server using the
 There are 2 flavors:
 - With `sourceMappingUrl` stamping:\
 You configure your javascript build to 'stamp' or 'index' the .js files with a URL to the sourcemap from the azure devops symbol server, and update the .js.map files to contain the unique client key of the symbol server url.\
+\
 For access to the source maps developers will need to be logged in at your Azure Devops URL, for example https://dev.azure.com/contoso
 - Without `sourceMappingUrl` stamping:\
 Only the .js.map files are stamped with a unique client key (which **must** be the SHA-256 hash of the corresponding .js file), which will be used in the "Uploading Symbols" step.\
+\
 For access to the source maps developers must use Edge and manually add an AzureDevOps PAT (PersonalAccessToken) under the DevTools 'Symbol Server' setting, as described in [Securely debug original code by using Azure Artifacts symbol server source maps](https://docs.microsoft.com/en-us/microsoft-edge/devtools-guide-chromium/javascript/consume-source-maps-from-azure) or [Retrieve source maps securely in production in Microsoft Edge DevTools](https://blogs.windows.com/msedgedev/2022/04/12/retrieve-source-maps-securely-in-production-in-microsoft-edge-devtools/).\
 Edge will automatically compute the SHA-256 hash of a script and use it as the index to search the in the organization's ADO artifacts.
 
