@@ -10,12 +10,12 @@ SourceMap files that can be uploaded to Azure DevOps Symbol server using the
 
 There are 2 flavors:
 - With `sourceMappingUrl` stamping:\
-You configure your javascript build to 'stamp' or 'index' the .js files with a URL to the sourcemap from the azure devops symbol server, and update the .js.map files to contain the unique client key of the symbol server url.
+You configure your javascript build to 'stamp' or 'index' the .js files with a URL to the sourcemap from the azure devops symbol server, and update the .js.map files to contain the unique client key of the symbol server url.\
 For access to the source maps developers will need to be logged in at your Azure Devops URL, for example https://dev.azure.com/contoso
 - Without `sourceMappingUrl` stamping:\
-Only the .js.map files are stamped with a unique client key (which must be the SHA-256 hash of the corresponding .js file), which will be used in the "Uploading Symbols" step.
-For access to the source maps developers must use Edge and manually add an AzureDevOps PAT (PersonalAccessToken) under the DevTools 'Symbol Server' setting, as described in [Securely debug original code by using Azure Artifacts symbol server source maps](https://docs.microsoft.com/en-us/microsoft-edge/devtools-guide-chromium/javascript/consume-source-maps-from-azure) or [Retrieve source maps securely in production in Microsoft Edge DevTools](https://blogs.windows.com/msedgedev/2022/04/12/retrieve-source-maps-securely-in-production-in-microsoft-edge-devtools/)
-Edge will automatically compute the SHA-256 hash of a script and use it as the index to search the in the orginization's ADO artifacts.
+Only the .js.map files are stamped with a unique client key (which **must** be the SHA-256 hash of the corresponding .js file), which will be used in the "Uploading Symbols" step.\
+For access to the source maps developers must use Edge and manually add an AzureDevOps PAT (PersonalAccessToken) under the DevTools 'Symbol Server' setting, as described in [Securely debug original code by using Azure Artifacts symbol server source maps](https://docs.microsoft.com/en-us/microsoft-edge/devtools-guide-chromium/javascript/consume-source-maps-from-azure) or [Retrieve source maps securely in production in Microsoft Edge DevTools](https://blogs.windows.com/msedgedev/2022/04/12/retrieve-source-maps-securely-in-production-in-microsoft-edge-devtools/).\
+Edge will automatically compute the SHA-256 hash of a script and use it as the index to search the in the organization's ADO artifacts.
 
 ## 1. Stamping the sourcemaps
 ### option a) Stamp with WebPack
@@ -82,7 +82,7 @@ You'll have to replace `<myproject>` with the name of your project i.e. contoso 
 
 `<uniqueId>` must be a unique id and it is up to you to choose a good value.\
 A recommendation would be to hash the source file to have a deterministic build output.
-If that is not a concern for you you could also just create a new GUID/UUID.
+If that is not a concern for you you could also just create a new GUID/UUID.\
 In the cases mentioned above, the WebPack plugin relies on the internal hash that webpack computes and the cli script computes the sha256 content hash of the Javascript file.
 
 for example:
