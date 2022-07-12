@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adding an optional configuration to use Edge devtools + ADO PAT",
-  "packageName": "azure-devops-symbols-webpack-plugin",
-  "email": "yfeigelson@microsoft.com",
-  "dependentChangeType": "patch"
-}

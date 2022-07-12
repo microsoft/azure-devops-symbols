@@ -1,8 +1,16 @@
 # Change Log - azure-devops-symbols-webpack-plugin
 
-This log was last generated on Fri, 25 Mar 2022 15:57:32 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Jul 2022 20:18:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.4.0
+
+Tue, 12 Jul 2022 20:18:40 GMT
+
+### Minor changes
+
+- Adding an optional configuration to use Edge devtools + ADO PAT (yfeigelson@microsoft.com)
 
 ## 1.3.3
 
