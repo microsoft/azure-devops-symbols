@@ -11,6 +11,9 @@ const pluginName = "AzureDevOpsSymbolsPlugin";
 
 export interface AzureDevOpsSymbolsPluginOptions {
   organization: string;
+  // Using the Edge AzureDevOps PersonalAccessToken route. In this case the 'sourceMappingURL' isn't appended, and users must add their ADO PAT in Edge DevTools
+  // See https://blogs.windows.com/msedgedev/2022/04/12/retrieve-source-maps-securely-in-production-in-microsoft-edge-devtools/
+  useEdgePAT?: boolean;
 }
 
 /**
@@ -18,10 +21,12 @@ export interface AzureDevOpsSymbolsPluginOptions {
  */
 export class AzureDevOpsSymbolsPlugin {
   organization: string = "<Organization>";
+  useEdgePAT: boolean = false;
 
   constructor(options?: AzureDevOpsSymbolsPluginOptions) {
     if (options) {
       this.organization = options.organization;
+      this.useEdgePAT = !!options.useEdgePAT;
     }
   }
 
@@ -30,7 +35,7 @@ export class AzureDevOpsSymbolsPlugin {
     // If we don't have source-map as a dev-tool this plugin doesn't need to do anything
     if (
       !options.devtool ||
-      (<any>options.devtool) === true ||
+      <any>options.devtool === true ||
       !options.devtool.includes("source-map")
     ) {
       console.log(
@@ -73,10 +78,11 @@ export class AzureDevOpsSymbolsPlugin {
 
             // This will only pass for assets
             if (sourceMap) {
-              // Compute the hash of the sourcefile (before appending the sourceUrl comment)
-              const hash = webpack.util.createHash(
-                compilation.outputOptions.hashFunction || "md4"
-              );
+              // Compute the hash of the sourcefile (this is the hash before appending the sourceUrl comment, if appended)
+              const hashFunc = this.useEdgePAT
+                ? "sha256"
+                : compilation.outputOptions.hashFunction || "md4";
+              const hash = webpack.util.createHash(hashFunc);
               asset.source.updateHash(hash);
               const clientKey = <string>hash.digest("hex");
 
@@ -92,14 +98,14 @@ export class AzureDevOpsSymbolsPlugin {
                 clientKey,
                 sourceMapFileName
               );
-              const sourceWithMapLineAppended = new webpackSources.ConcatSource(
+              const updatedSourceMapSource = new webpackSources.ConcatSource(
                 // @ts-ignore is fine for Webpack v4...
                 asset.source.source(),
-                sourceMapLineToAppend
+                this.useEdgePAT ? "" : sourceMapLineToAppend
               );
               const assetWithClientKeyOnSourceMap =
                 new webpackSources.SourceMapSource(
-                  sourceWithMapLineAppended.source(),
+                  updatedSourceMapSource.source(),
                   asset.name,
                   // @ts-ignore is fine for Webpack v4...
                   sourceMap, // Note: For w/e reason this has no affect on the output .map file
