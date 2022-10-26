@@ -884,6 +884,15 @@ async-done@^1.2.2:
     process-nextick-args "^2.0.0"
     stream-exhaust "^1.0.1"
 
+async-done@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/async-done/-/async-done-2.0.0.tgz#f1ec5df738c6383a52b0a30d0902fd897329c15a"
+  integrity sha512-j0s3bzYq9yKIVLKGE/tWlCpa3PfFLcrDZLTSVdnnCTGagXuXBJO4SsY9Xdk/fQBirCkH4evW5xOeJXqlAQFdsw==
+  dependencies:
+    end-of-stream "^1.4.4"
+    once "^1.4.0"
+    stream-exhaust "^1.0.2"
+
 async-each@^1.0.1:
   version "1.0.3"
   resolved "https://registry.npmjs.org/async-each/-/async-each-1.0.3.tgz#b727dbf87d7651602f06f4d4ac387f47d91b0cbf"
@@ -895,6 +904,13 @@ async-settle@^1.0.0:
   integrity sha1-HQqRS7Aldb7IqPOnTlCA9yssDGs=
   dependencies:
     async-done "^1.2.2"
+
+async-settle@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/async-settle/-/async-settle-2.0.0.tgz#c695ad14e070f6a755d019d32d6eb38029020287"
+  integrity sha512-Obu/KE8FurfQRN6ODdHN9LuXqwC+JFIM9NRyZqJJ4ZfLJmIYN9Rg0/kb+wF70VV5+fJusTMQlJ1t5rF7J/ETdg==
+  dependencies:
+    async-done "^2.0.0"
 
 asynckit@^0.4.0:
   version "0.4.0"
@@ -919,7 +935,7 @@ azure-devops-symbols-sourcemap@1.2.0:
     fs-extra "^10.0.0"
     webpack-sources "^2.3.1"
 
-bach@^1.0.0, bach@^1.2.0:
+bach@^1.0.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/bach/-/bach-1.2.0.tgz#4b3ce96bf27134f79a1b414a51c14e34c3bd9880"
   integrity sha1-Szzpa/JxNPeaG0FKUcFONMO9mIA=
@@ -933,6 +949,15 @@ bach@^1.0.0, bach@^1.2.0:
     async-done "^1.2.2"
     async-settle "^1.0.0"
     now-and-later "^2.0.0"
+
+bach@^2.0.0:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/bach/-/bach-2.0.1.tgz#45a3a3cbf7dbba3132087185c60357482b988972"
+  integrity sha512-A7bvGMGiTOxGMpNupYl9HQTf0FFDNF4VCmks4PJpFyN1AX2pdKuxuwdvUz2Hu388wcgp+OvGFNsumBfFNkR7eg==
+  dependencies:
+    async-done "^2.0.0"
+    async-settle "^2.0.0"
+    now-and-later "^3.0.0"
 
 backfill-cache@^5.2.4:
   version "5.2.4"
@@ -1806,7 +1831,7 @@ emojis-list@^3.0.0:
   resolved "https://registry.npmjs.org/emojis-list/-/emojis-list-3.0.0.tgz#5570662046ad29e2e916e71aae260abdff4f6a78"
   integrity sha512-/kyM18EfinwXZbno9FyUGeFh87KC8HRQBQGildHZbEuRyWFOmv1U10o9BBp8XVZDVNNuQKyIGIu5ZYAAXJ0V2Q==
 
-end-of-stream@^1.0.0, end-of-stream@^1.1.0, end-of-stream@^1.4.1:
+end-of-stream@^1.0.0, end-of-stream@^1.1.0, end-of-stream@^1.4.1, end-of-stream@^1.4.4:
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/end-of-stream/-/end-of-stream-1.4.4.tgz#5ae64a5f45057baf3626ec14da0ca5e4b2431eb0"
   integrity sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==
@@ -2831,14 +2856,14 @@ jsonfile@^6.0.1:
     graceful-fs "^4.1.6"
 
 "just-scripts-utils@>=1.1.5 <2.0.0":
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/just-scripts-utils/-/just-scripts-utils-1.1.5.tgz#25f51bedad0893b144775f5b7e392a720bbbb14d"
-  integrity sha512-kAK89TnXmCQYTKvvXhY9i27yh1wFOxYKdj+et3AzvVynZ0yOmFJVuYb4sz0b/PG57ft2fXjluWyuhUpYwkEa8Q==
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/just-scripts-utils/-/just-scripts-utils-1.1.7.tgz#c8eacfce98184345ca2ab337464dcfe20e3f9188"
+  integrity sha512-zd8ZpifBFRoMe6LC/gHM7zA1XxsCT0MD5+NPcG+Wx+phjaS8Nrvd4WogoxlFPvgkaIl4/KQvFBGUInNzumFhXQ==
   dependencies:
-    fs-extra "^8.0.0"
+    fs-extra "^10.0.0"
     glob "^7.1.3"
     jju "^1.4.0"
-    just-task-logger ">=1.1.1 <2.0.0"
+    just-task-logger ">=1.1.2 <2.0.0"
     marked "^4.0.12"
     marked-terminal "^4.1.0"
     semver "^7.0.0"
@@ -2863,28 +2888,28 @@ just-scripts@^1.5.7, just-scripts@^1.8.0:
     supports-color "^8.1.0"
     webpack-merge "^5.7.3"
 
-"just-task-logger@>=1.1.1 <2.0.0":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/just-task-logger/-/just-task-logger-1.1.1.tgz#531d2b38b79aab61a59869bbf93769565191398b"
-  integrity sha512-9UXvsKrunTWjZvNcyWapyngG31+fsn81AUzNX9QUN160LJFsCW6UeQ+2rRRKSbkDq7vTbBj6nGnlW/5edJdptw==
+"just-task-logger@>=1.1.2 <2.0.0":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/just-task-logger/-/just-task-logger-1.1.2.tgz#e749a4390c227b57faad1bd0f279ec918beb7fa9"
+  integrity sha512-xdFQlj76mAZxHZD6+wggT1Wi6QW7LjzS800+fHvGKTFfSnzrmHVcuWYClFL97TrUxZocGWtLndqPdovagXJ9wg==
   dependencies:
     chalk "^4.0.0"
     yargs "^16.2.0"
 
 "just-task@>=1.5.0 <2.0.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/just-task/-/just-task-1.5.0.tgz#4a3bd0b216c951424b7b6b9339ed4cc5b060317e"
-  integrity sha512-oamAeJBBfI3zbzEHjLCnPJJCeBeAJPLssRpAGO/C0vCa7Hf0p2UORBbR77irZTdNRzW/fSLV2ua6lsDJIz3mIA==
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/just-task/-/just-task-1.6.1.tgz#cd849e5a02683a49948941bfa3a98c292fd677e5"
+  integrity sha512-JQDkDHQh9hdnfJHhJywgFmuKdFtsHPJVCGa9Qw4CHY/cSGtg0JjjKrlCGru1IUJmop//+2mjYReAMwSefJQsSA==
   dependencies:
     "@rushstack/package-deps-hash" "^3.2.5"
-    bach "^1.2.0"
+    bach "^2.0.0"
     chalk "^4.0.0"
     chokidar "^3.5.2"
-    fs-extra "^8.0.0"
-    just-task-logger ">=1.1.1 <2.0.0"
+    fs-extra "^10.0.0"
+    just-task-logger ">=1.1.2 <2.0.0"
     resolve "^1.19.0"
     undertaker "^1.3.0"
-    undertaker-registry "^1.0.1"
+    undertaker-registry "^2.0.0"
     yargs-parser "^20.2.3"
 
 kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:
@@ -3384,6 +3409,13 @@ now-and-later@^2.0.0:
   integrity sha512-KGvQ0cB70AQfg107Xvs/Fbu+dGmZoTRJp2TaPwcwQm3/7PteUyN2BCgk8KBMPGBUXZdVwyWS8fDCGFygBm19UQ==
   dependencies:
     once "^1.3.2"
+
+now-and-later@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/now-and-later/-/now-and-later-3.0.0.tgz#cdc045dc5b894b35793cf276cc3206077bb7302d"
+  integrity sha512-pGO4pzSdaxhWTGkfSfHx3hVzJVslFPwBp2Myq9MYN/ChfJZF87ochMAXnvz6/58RJSf5ik2q9tXprBBrk2cpcg==
+  dependencies:
+    once "^1.4.0"
 
 npm-run-path@^4.0.0, npm-run-path@^4.0.1:
   version "4.0.1"
@@ -4263,7 +4295,7 @@ stream-each@^1.1.0:
     end-of-stream "^1.1.0"
     stream-shift "^1.0.0"
 
-stream-exhaust@^1.0.1:
+stream-exhaust@^1.0.1, stream-exhaust@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/stream-exhaust/-/stream-exhaust-1.0.2.tgz#acdac8da59ef2bc1e17a2c0ccf6c320d120e555d"
   integrity sha512-b/qaq/GlBK5xaq1yrK9/zFcyRSTNxmcZwFLGSTG0mXgZl/4Z6GgiyYOXOvY7N3eEvFRAG1bkDRz5EPGSvPYQlw==
@@ -4629,10 +4661,15 @@ typescript@^4.2.4, typescript@^4.6.2:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.3.tgz#eefeafa6afdd31d725584c67a0eaba80f6fc6c6c"
   integrity sha512-yNIatDa5iaofVozS/uQJEl3JRWLKKGJKh6Yaiv0GLGSuhpFJe7P3SbHZ8/yjAHRQwKRoA6YZqlfjXWmVzoVSMw==
 
-undertaker-registry@^1.0.0, undertaker-registry@^1.0.1:
+undertaker-registry@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/undertaker-registry/-/undertaker-registry-1.0.1.tgz#5e4bda308e4a8a2ae584f9b9a4359a499825cc50"
   integrity sha1-XkvaMI5KiirlhPm5pDWaSZglzFA=
+
+undertaker-registry@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/undertaker-registry/-/undertaker-registry-2.0.0.tgz#d434246e398444740dd7fe4c9543e402ad99e4ca"
+  integrity sha512-+hhVICbnp+rlzZMgxXenpvTxpuvA67Bfgtt+O9WOE5jo7w/dyiF1VmoZVIHvP2EkUjsyKyTwYKlLhA+j47m1Ew==
 
 undertaker@^1.3.0:
   version "1.3.0"
