@@ -22,5 +22,8 @@
     "devDependencies": {
         "beachball": "^2.31.6",
         "lage": "^1.9.6"
+    },
+    "engines": {
+        "node": ">=14"
     }
 }
