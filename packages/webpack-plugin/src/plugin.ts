@@ -102,7 +102,7 @@ export class AzureDevOpsSymbolsPlugin {
                 );
 
                 compilation.updateAsset(asset.name, source, (info) =>
-                  Object.assign(info, {
+                  Object.assign(info || {}, {
                     adoSourecMapEnabled: true,
                     related: {
                       sourceMapLineToAppend: sourceMapLineToAppend,
