@@ -25,5 +25,11 @@
     },
     "engines": {
         "node": ">=14"
+    },
+    "resolutions": {
+        "glob-parent": "5.1.2"
+    },
+    "resolutions-justification": {
+        "glob-parent": "CVE-2020-28469"
     }
 }
