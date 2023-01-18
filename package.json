@@ -20,19 +20,10 @@
         ]
     },
     "devDependencies": {
-        "beachball": "^2.20.0",
-        "lage": "^0.29.3"
+        "beachball": "^2.31.6",
+        "lage": "^1.9.6"
     },
-    "resolutions": {
-        "glob-parent": "5.1.2",
-        "z-schema": "5.0.2"
-    },
-    "resolutions-justification": {
-        "glob-parent": "CVE-2020-28469",
-        "z-schema": " CVE-2021-3765 in validator. z-schema is used by rush which is a dependency of lage so should not be executed in this repo"
-    },
-    "dependencies": {
-        "just-scripts": "^1.8.0",
-        "typescript": "^4.6.2"
+    "engines": {
+        "node": ">=14"
     }
 }
