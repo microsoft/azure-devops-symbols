@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Update dependencies",
-  "packageName": "azure-devops-symbols-sourcemap",
-  "email": "dannyvv@microsoft.com",
-  "dependentChangeType": "patch"
-}

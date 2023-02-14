@@ -2,6 +2,29 @@
   "name": "azure-devops-symbols-webpack4-plugin",
   "entries": [
     {
+      "date": "Tue, 14 Feb 2023 20:51:35 GMT",
+      "tag": "azure-devops-symbols-webpack4-plugin_v1.1.2",
+      "version": "1.1.2",
+      "comments": {
+        "none": [
+          {
+            "author": "dannyvv@microsoft.com",
+            "package": "azure-devops-symbols-webpack4-plugin",
+            "commit": "2bdacf2c187ad2be6913e3fad511370cd8f2a2a1",
+            "comment": "Remove unnecesary package-lock file"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "azure-devops-symbols-webpack4-plugin",
+            "comment": "Bump azure-devops-symbols-sourcemap to v1.4.0",
+            "commit": "0c08125a431dfc4510a56b0c37a242c15778d946"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 Jul 2022 20:18:40 GMT",
       "tag": "azure-devops-symbols-webpack4-plugin_v1.1.0",
       "version": "1.1.0",

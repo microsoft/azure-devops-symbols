@@ -1,8 +1,16 @@
 # Change Log - azure-devops-symbols-webpack4-plugin
 
-This log was last generated on Tue, 12 Jul 2022 20:18:40 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Feb 2023 20:51:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.1.2
+
+Tue, 14 Feb 2023 20:51:35 GMT
+
+### Patches
+
+- Bump azure-devops-symbols-sourcemap to v1.4.0
 
 ## 1.1.0
 

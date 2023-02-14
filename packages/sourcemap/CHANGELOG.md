@@ -1,8 +1,16 @@
 # Change Log - azure-devops-symbols-sourcemap
 
-This log was last generated on Fri, 25 Mar 2022 15:57:32 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Feb 2023 20:51:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.4.0
+
+Tue, 14 Feb 2023 20:51:35 GMT
+
+### Minor changes
+
+- Update dependencies (dannyvv@microsoft.com)
 
 ## 1.2.1
 

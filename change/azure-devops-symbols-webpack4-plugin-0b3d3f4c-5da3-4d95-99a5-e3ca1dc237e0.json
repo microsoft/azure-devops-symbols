@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove unnecesary package-lock file",
-  "packageName": "azure-devops-symbols-webpack4-plugin",
-  "email": "dannyvv@microsoft.com",
-  "dependentChangeType": "none"
-}
