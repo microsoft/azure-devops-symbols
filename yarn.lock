@@ -954,14 +954,6 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
-azure-devops-symbols-sourcemap@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/azure-devops-symbols-sourcemap/-/azure-devops-symbols-sourcemap-1.2.0.tgz#b6a736f59fc91b6abdbbaa1c9ab8e045d2c95f2e"
-  integrity sha512-/xCV/lmAwhjkNXr+7mJDNwxASkl0JqymVKBTnIbPAq8Iv250u2pQJOlC2ZpNE0h49Jvc44f9ed9JLyngW8wDJA==
-  dependencies:
-    fs-extra "^10.0.0"
-    webpack-sources "^2.3.1"
-
 bach@^1.0.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/bach/-/bach-1.2.0.tgz#4b3ce96bf27134f79a1b414a51c14e34c3bd9880"
@@ -4680,7 +4672,7 @@ webpack-sources@^1.4.0, webpack-sources@^1.4.1:
     source-list-map "^2.0.0"
     source-map "~0.6.1"
 
-webpack-sources@^2.1.0, webpack-sources@^2.3.1:
+webpack-sources@^2.1.0:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-2.3.1.tgz#570de0af163949fe272233c2cefe1b56f74511fd"
   integrity sha512-y9EI9AO42JjEcrTJFOYmVywVZdKVUfOvDUPsJea5GIr1JOEGFVqwlY2K098fFoIjOkDzHn2AjRvM8dsBZu+gCA==

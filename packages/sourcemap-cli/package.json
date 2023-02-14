@@ -1,6 +1,6 @@
 {
   "name": "azure-devops-symbols-sourcemap-cli",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "license": "MIT",
   "main": "lib/cli.js",
   "bin": {
@@ -16,7 +16,7 @@
     "directory": "packages/sourcemap-cli"
   },
   "dependencies": {
-    "azure-devops-symbols-sourcemap": "1.2.1",
+    "azure-devops-symbols-sourcemap": "^1.3.0",
     "chalk": "^4.1.2",
     "fs-extra": "^11.1.0",
     "glob": "^8.1.0",
