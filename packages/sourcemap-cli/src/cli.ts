@@ -31,14 +31,19 @@ const argv = yargs.options({
     describe: 'The hash algorithm to use of the original source file. Valid values are algorithms of https://nodejs.org/api/crypto.html#crypto_crypto_createhash_algorithm_options',
     default: 'sha256'
   },
-}).argv;
+}).parseSync();
 
 async function run(directory: string, organization: string, globPattern: string, hashAlgo: string) : Promise<void>{
-  const jsMapFiles = glob.sync(path.join(directory, globPattern));
+  const jsMapFiles = glob.sync(globPattern, { cwd: directory } );
   
+  if (jsMapFiles.length === 0) {
+    fail(`No files found for pattern ${globPattern}`);
+  }
+
   for (var jsMapFile of jsMapFiles) {
-    console.log(`Indexing ${jsMapFile}`)
-    await indexJsMapFileAsync(organization, hashAlgo, jsMapFile);
+    const jsMapFilePath = path.join(directory, jsMapFile);
+    console.log(`Indexing ${jsMapFilePath}`)
+    await indexJsMapFileAsync(organization, hashAlgo, jsMapFilePath);
   }
 }
 
