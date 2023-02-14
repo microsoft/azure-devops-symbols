@@ -14,11 +14,11 @@
   },
   "dependencies": {
     "azure-devops-symbols-sourcemap": "1.2.1",
-    "webpack-sources": "^2.3.1"
+    "webpack-sources": "^3.2.3"
   },
   "devDependencies": {
-    "@types/webpack-sources": "^2.1.0",
+    "@types/webpack-sources": "^3.2.0",
     "azure-devops-symbols-build-tools": "0.1.0",
-    "webpack": "^5.50.0"
+    "webpack": "^5.75.0"
   }
 }

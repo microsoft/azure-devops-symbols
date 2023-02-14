@@ -14,11 +14,11 @@
     "directory": "packages/sourcemap"
   },
   "dependencies": {
-    "fs-extra": "^10.0.0",
-    "webpack-sources": "^2.3.1"
+    "fs-extra": "^11.1.0",
+    "webpack-sources": "^3.2.3"
   },
   "devDependencies": {
-    "@types/fs-extra": "^9.0.12",
+    "@types/fs-extra": "^11.0.1",
     "@types/node": "^15.6.0",
     "azure-devops-symbols-build-tools": "0.1.0"
   }

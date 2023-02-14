@@ -18,19 +18,18 @@
   "dependencies": {
     "azure-devops-symbols-sourcemap": "1.2.1",
     "chalk": "^4.1.2",
-    "fs-extra": "^10.0.0",
-    "glob": "^7.1.7",
-    "webpack-sources": "^2.3.1",
-    "yargs": "^16.2.0"
+    "fs-extra": "^11.1.0",
+    "glob": "^8.1.0",
+    "webpack-sources": "^3.2.3",
+    "yargs": "^17.6.2"
   },
   "devDependencies": {
-    "@types/chalk": "^2.2.0",
-    "@types/fs-extra": "^9.0.12",
+    "@types/fs-extra": "^11.0.1",
     "@types/glob": "^7.1.4",
     "@types/node": "^15.6.0",
-    "@types/webpack-sources": "^2.1.0",
-    "@types/yargs": "^15.0.14",
+    "@types/webpack-sources": "^3.2.0",
+    "@types/yargs": "^17.0.22",
     "azure-devops-symbols-build-tools": "0.1.0",
-    "webpack": "^5.50.0"
+    "webpack": "^5.75.0"
   }
 }
