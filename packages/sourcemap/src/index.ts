@@ -31,6 +31,20 @@ function moveMemberToEnd(obj: any, field: string) : void {
     obj[field] = value;
 }
 
+function hashFile(path: string) : Promise<string> {
+    const sha256 = crypto.createHash("sha256")
+                         .setEncoding("hex");
+
+    return new Promise((resolve, reject) =>
+        fsExtra.createReadStream(path)
+               .on("error", reject)
+               .pipe(sha256)
+               .once("finish", function () {
+                   resolve(sha256.read());
+               })
+    );
+}
+
 export async function indexJsMapFileAsync(organization: string, hashAlgo: string, jsMapFile: string) : Promise<void> {
     console.log(`Processing sourcemap file ${jsMapFile}`);
 
@@ -45,10 +59,12 @@ export async function indexJsMapFileAsync(organization: string, hashAlgo: string
     }
 
     // Compute hash of file:
-    const readStream = fsExtra.createReadStream(sourceFilePath);
-    var hash = crypto.createHash(hashAlgo);
-    readStream.pipe(hash);
-    const clientKey = hash.digest("hex");
+    const clientKey = await hashFile(sourceFilePath);
+
+    // Check for empty hash and fail
+    if (clientKey === "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855") {
+        throw new Error(`Source file ${sourceFilePath} has an empty hash. Something must have gone wrong..`);
+    }
 
     // Update the sourcemap file.
     console.log(`    Updating sourcemap file with key ${clientKey}`);
