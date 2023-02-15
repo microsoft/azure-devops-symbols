@@ -2,6 +2,21 @@
   "name": "azure-devops-symbols-sourcemap",
   "entries": [
     {
+      "date": "Wed, 15 Feb 2023 22:22:55 GMT",
+      "tag": "azure-devops-symbols-sourcemap_v1.5.0",
+      "version": "1.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dannyvv@microsoft.com",
+            "package": "azure-devops-symbols-sourcemap",
+            "commit": "f5919d971a002dbd9c30b705f50ff28da27817f2",
+            "comment": "Fix hashing and guard against null hash"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 14 Feb 2023 20:51:35 GMT",
       "tag": "azure-devops-symbols-sourcemap_v1.4.0",
       "version": "1.4.0",
