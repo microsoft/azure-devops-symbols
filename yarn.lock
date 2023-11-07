@@ -413,20 +413,15 @@
     anymatch "^3.0.0"
     source-map "^0.6.0"
 
-"@types/yargs-parser@*":
-  version "20.2.0"
-  resolved "https://registry.yarnpkg.com/@types/yargs-parser/-/yargs-parser-20.2.0.tgz#dd3e6699ba3237f0348cd085e4698780204842f9"
-  integrity sha512-37RSHht+gzzgYeobbG+KWryeAW8J33Nhr69cjTqSYymXVZEN9NbRYWoYlRtDhHKPVT1FyNKwaTPC1NynKZpzRA==
-
-"@types/yargs-parser@^20.2.2":
+"@types/yargs-parser@*", "@types/yargs-parser@^20.2.2":
   version "20.2.3"
   resolved "https://registry.yarnpkg.com/@types/yargs-parser/-/yargs-parser-20.2.3.tgz#696bbf626a826864ebd94c42f57d133a32d5ba0d"
   integrity sha512-PXVDzW/BeYFd2ePf0H1OgN1SRKupQ7tfOVebkJ0MhB5cJrL5mGwQs+d8+TESjgujbPGctyMJwqcIvaW7aogWZg==
 
 "@types/yargs@^17.0.22":
-  version "17.0.25"
-  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-17.0.25.tgz#3edd102803c97356fb4c805b2bbaf7dfc9ab6abc"
-  integrity sha512-gy7iPgwnzNvxgAEi2bXOHWCVOG6f7xsprVJH4MjlAWeBmJ7vh/Y1kwMtUrs64ztf24zVIRCpr3n/z6gm9QIkgg==
+  version "17.0.30"
+  resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-17.0.30.tgz#921094ec92faffd2cd7e5ddb02f95ba158ab5c1d"
+  integrity sha512-3SJLzYk3yz3EgI9I8OLoH06B3PdXIoU2imrBZzaGqUtUXf5iUNDtmAfCGuQrny1bnmyjh/GM/YNts6WK5jR5Rw==
   dependencies:
     "@types/yargs-parser" "*"
 
