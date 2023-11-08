@@ -402,9 +402,9 @@
     source-map "^0.7.3"
 
 "@types/webpack@^4.40.0":
-  version "4.41.33"
-  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-4.41.33.tgz#16164845a5be6a306bcbe554a8e67f9cac215ffc"
-  integrity sha512-PPajH64Ft2vWevkerISMtnZ8rTs4YmRbs+23c402J0INmxDKCrhZNvwZYtzx96gY2wAtXdrK1BS2fiC8MlLr3g==
+  version "4.41.36"
+  resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-4.41.36.tgz#30d039ca41d155d8aeba6cd2bcbe32e78bb5bef2"
+  integrity sha512-pF+DVW1pMLmgsPXqJr5QimdxIzOhe8oGKB98gdqAm0egKBy1lOLD5mRxbYboMQRkpYcG7BYcpqYblpKyvE7vhQ==
   dependencies:
     "@types/node" "*"
     "@types/tapable" "^1"
