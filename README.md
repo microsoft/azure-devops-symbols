@@ -34,7 +34,8 @@ module.exports = {
         ...
 
         new AzureDevOpsSymbolsPlugin({
-            organization: "contoso"
+            organization: "contoso",
+            silent: true // to switch off diagnosic console logging
         })
     ],
     ...
