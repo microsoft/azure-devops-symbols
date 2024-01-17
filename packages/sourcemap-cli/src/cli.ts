@@ -31,10 +31,15 @@ const argv = yargs.options({
     describe: 'The hash algorithm to use of the original source file. Valid values are algorithms of https://nodejs.org/api/crypto.html#crypto_crypto_createhash_algorithm_options',
     default: 'sha256'
   },
+  silent: {
+    type: 'boolean',
+    describe: 'Switches off informational console logging',
+    default: false
+  }
 }).parseSync();
 
-async function run(directory: string, organization: string, globPattern: string, hashAlgo: string) : Promise<void>{
-  const jsMapFiles = glob.sync(globPattern, { cwd: directory } );
+async function run(directory: string, organization: string, globPattern: string, hashAlgo: string, silent: boolean) : Promise<void>{
+  const jsMapFiles = glob.sync(globPattern, { cwd: directory });
   
   if (jsMapFiles.length === 0) {
     fail(`No files found for pattern ${globPattern}`);
@@ -42,8 +47,10 @@ async function run(directory: string, organization: string, globPattern: string,
 
   for (var jsMapFile of jsMapFiles) {
     const jsMapFilePath = path.join(directory, jsMapFile);
-    console.log(`Indexing ${jsMapFilePath}`)
-    await indexJsMapFileAsync(organization, hashAlgo, jsMapFilePath);
+    if (!silent) {
+      console.log(`Indexing ${jsMapFilePath}`);
+    }
+    await indexJsMapFileAsync(organization, hashAlgo, jsMapFilePath, silent);
   }
 }
 
@@ -55,5 +62,5 @@ if (!fsExtra.pathExistsSync(argv.directory)) {
   fail(`Specified argument: 'folder' with value '${argv.directory}' does not exist.`);
 }
 
-run(argv.directory, argv.organization, argv.globPattern, argv.hashAlgo)
+run(argv.directory, argv.organization, argv.globPattern, argv.hashAlgo, argv.silent)
   .catch(err => fail(err));

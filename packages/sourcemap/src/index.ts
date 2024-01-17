@@ -45,8 +45,10 @@ function hashFile(path: string) : Promise<string> {
     );
 }
 
-export async function indexJsMapFileAsync(organization: string, hashAlgo: string, jsMapFile: string) : Promise<void> {
-    console.log(`Processing sourcemap file ${jsMapFile}`);
+export async function indexJsMapFileAsync(organization: string, hashAlgo: string, jsMapFile: string, silent?: boolean) : Promise<void> {
+    const log = silent ? () => {} : console.log;
+    
+    log(`Processing sourcemap file ${jsMapFile} for organization ${organization} with hash algorithm: ${hashAlgo}`);
 
     const sourceMap = await fsExtra.readJson(jsMapFile);
     if (!sourceMap.file) {
@@ -67,11 +69,11 @@ export async function indexJsMapFileAsync(organization: string, hashAlgo: string
     }
 
     // Update the sourcemap file.
-    console.log(`    Updating sourcemap file with key ${clientKey}`);
+    log(`    Updating sourcemap file with key ${clientKey}`);
     setClientKeyOnSourceMap(clientKey, sourceMap)
     await fsExtra.writeJSON(jsMapFile, sourceMap);
 
-    console.log(`    Updating source file ${sourceFilePath}`);
+    log(`    Updating source file ${sourceFilePath}`);
     const sourceMapUrlComment = computeSourceMapUrlLine(organization, clientKey, path.basename(jsMapFile));
     await fsExtra.appendFile(sourceFilePath, sourceMapUrlComment);
 }

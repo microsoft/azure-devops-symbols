@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Enable silent option/mode for CLI and webpack plugins",
+  "packageName": "azure-devops-symbols-webpack-plugin",
+  "email": "dannyvv@microsoft.com",
+  "dependentChangeType": "patch"
+}

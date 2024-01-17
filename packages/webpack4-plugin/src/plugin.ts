@@ -14,6 +14,7 @@ export interface AzureDevOpsSymbolsPluginOptions {
   // Using the Edge AzureDevOps PersonalAccessToken route. In this case the 'sourceMappingURL' isn't appended, and users must add their ADO PAT in Edge DevTools
   // See https://blogs.windows.com/msedgedev/2022/04/12/retrieve-source-maps-securely-in-production-in-microsoft-edge-devtools/
   useEdgePAT?: boolean;
+  silent?: boolean;
 }
 
 /**
@@ -22,11 +23,19 @@ export interface AzureDevOpsSymbolsPluginOptions {
 export class AzureDevOpsSymbolsPlugin {
   organization: string = "<Organization>";
   useEdgePAT: boolean = false;
+  silent: boolean = false;
 
   constructor(options?: AzureDevOpsSymbolsPluginOptions) {
     if (options) {
       this.organization = options.organization;
       this.useEdgePAT = !!options.useEdgePAT;
+      this.silent = !!options.silent;
+    }
+  }
+
+  private log(...args: Parameters<Console["log"]>): void {
+    if (!this.silent) {
+      console.log(...args);
     }
   }
 
@@ -38,7 +47,7 @@ export class AzureDevOpsSymbolsPlugin {
       <any>options.devtool === true ||
       !options.devtool.includes("source-map")
     ) {
-      console.log(
+      this.log(
         `${pluginName}: returning since there's no source-map devtool`
       );
       return;
@@ -86,7 +95,7 @@ export class AzureDevOpsSymbolsPlugin {
               asset.source.updateHash(hash);
               const clientKey = <string>hash.digest("hex");
 
-              console.log(
+              this.log(
                 `Tagging sourcemap with ${clientKey} to ${asset.name}`
               );
 
