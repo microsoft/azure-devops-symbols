@@ -48,7 +48,7 @@ function hashFile(path: string) : Promise<string> {
 export async function indexJsMapFileAsync(organization: string, hashAlgo: string, jsMapFile: string, silent?: boolean) : Promise<void> {
     const log = silent ? () => {} : console.log;
     
-    log(`Processing sourcemap file ${jsMapFile}`);
+    log(`Processing sourcemap file ${jsMapFile} for organization ${organization} with hash algorithm: ${hashAlgo}`);
 
     const sourceMap = await fsExtra.readJson(jsMapFile);
     if (!sourceMap.file) {
