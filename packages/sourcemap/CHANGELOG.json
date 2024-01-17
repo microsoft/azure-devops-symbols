@@ -2,6 +2,21 @@
   "name": "azure-devops-symbols-sourcemap",
   "entries": [
     {
+      "date": "Wed, 17 Jan 2024 21:09:24 GMT",
+      "version": "1.6.0",
+      "tag": "azure-devops-symbols-sourcemap_v1.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dannyvv@microsoft.com",
+            "package": "azure-devops-symbols-sourcemap",
+            "commit": "af48bc46413b0affc05d4e8497b281a22f6cc7ce",
+            "comment": "Enable silent option/mode for CLI and webpack plugins"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 15 Feb 2023 22:22:55 GMT",
       "tag": "azure-devops-symbols-sourcemap_v1.5.0",
       "version": "1.5.0",
