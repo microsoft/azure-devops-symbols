@@ -1082,9 +1082,9 @@ base@^0.11.1:
     pascalcase "^0.1.1"
 
 beachball@^2.31.6:
-  version "2.39.0"
-  resolved "https://registry.yarnpkg.com/beachball/-/beachball-2.39.0.tgz#f18a8b7d1387eaadbb15a9ec8d4d804da5334aff"
-  integrity sha512-YyhL16twP3sa0Pd+auXDzG2xqIPBLF+9GIsMEXMRpSjk9eYpzqSY/BOKbwzy+VqsUlQxWfVIFxijbUEQZYIwUQ==
+  version "2.42.0"
+  resolved "https://registry.yarnpkg.com/beachball/-/beachball-2.42.0.tgz#a20e40f18e38732868c050dd49f85c9d74abd090"
+  integrity sha512-Mi/i2eO2o4Cnb6LqBacFlV0rPdllx0IG+TNyIdnn83QYz0YJaPlEIvZPScmeYw+Ug7OyNAsFb3tWGYDlg0mgRg==
   dependencies:
     cosmiconfig "^8.3.6"
     execa "^5.0.0"
