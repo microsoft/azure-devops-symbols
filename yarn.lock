@@ -2828,9 +2828,9 @@ kleur@^3.0.3:
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
 lage@^1.9.6:
-  version "1.9.7"
-  resolved "https://registry.yarnpkg.com/lage/-/lage-1.9.7.tgz#cd18d99bef9f84a9181c25b394767a24faa2d0c8"
-  integrity sha512-/fX9SK7M0JCUC4lkqhxcqMzGqAqOtJsmDevuTAkaHCbnUGR1wG3WP2urd+yvnFTpkOmJ5E9EnwX5CEDnsKgyQQ==
+  version "1.10.1"
+  resolved "https://registry.yarnpkg.com/lage/-/lage-1.10.1.tgz#da0d30fa801fea7d0ad82767d2d7609ed9d4a3b9"
+  integrity sha512-00AQVyOSw6TlFc1/kHOq51j0OBE/useELo5QRi3no/1+V5MigSifCijulYVEvyJgdf+qZK91IZ40NkIU5zXIyQ==
   dependencies:
     "@xmldom/xmldom" "^0.8.0"
     abort-controller "^3.0.0"
