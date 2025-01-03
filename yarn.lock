@@ -1082,21 +1082,21 @@ base@^0.11.1:
     pascalcase "^0.1.1"
 
 beachball@^2.31.6:
-  version "2.43.1"
-  resolved "https://registry.yarnpkg.com/beachball/-/beachball-2.43.1.tgz#05c3d49380fad8af3f9a029556b36d28a6c35f05"
-  integrity sha512-qMNOIwrH8SYwybkHI4k8rOe1/YaYAlFYD5kSsyrUHWKFTlWRCcq01VncuIwSD2M7X1IgOKH/R+smXbIC9xohKg==
+  version "2.51.0"
+  resolved "https://registry.yarnpkg.com/beachball/-/beachball-2.51.0.tgz#6e4e930626fcdf9998099df7be0a8bd6d6cabeed"
+  integrity sha512-Io+mzUb2QnTeOFDzyho0woU6FnUf1UlJLljJUIyMMJqxxj/sflXe5/CKnWk1c00FGRjMyftSx7oo7fD4Rf3ZEw==
   dependencies:
     cosmiconfig "^8.3.6"
     execa "^5.0.0"
     fs-extra "^11.1.1"
     lodash "^4.17.15"
     minimatch "^3.0.4"
+    p-graph "^1.1.2"
     p-limit "^3.0.2"
     prompts "^2.4.2"
     semver "^7.0.0"
     toposort "^2.0.2"
-    uuid "^9.0.0"
-    workspace-tools "^0.36.3"
+    workspace-tools "^0.38.0"
     yargs-parser "^21.0.0"
 
 big.js@^5.2.2:
@@ -3318,7 +3318,7 @@ os-browserify@^0.3.0:
   resolved "https://registry.npmjs.org/os-browserify/-/os-browserify-0.3.0.tgz#854373c7f5c2315914fc9bfc6bd8238fdda1ec27"
   integrity sha1-hUNzx/XCMVkU/Jv8a9gjj92h7Cc=
 
-p-graph@^1.1.1:
+p-graph@^1.1.1, p-graph@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/p-graph/-/p-graph-1.1.2.tgz#594010591e258ebc013f275f414ef6c5bfc25d51"
   integrity sha512-GnEEHrOMozk0hCjXBm011oYb3zpaOolxHgqL2s7Od2niGAJKyk/4FZ2VRUAgjqqqoQnZQtwkF6fjGDJkIQTjDQ==
@@ -4529,11 +4529,6 @@ uuid@^8.3.0:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
 
-uuid@^9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-9.0.0.tgz#592f550650024a38ceb0c562f2f6aa435761efb5"
-  integrity sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==
-
 validator@^13.7.0:
   version "13.7.0"
   resolved "https://registry.yarnpkg.com/validator/-/validator-13.7.0.tgz#4f9658ba13ba8f3d82ee881d3516489ea85c0857"
@@ -4709,10 +4704,10 @@ workspace-tools@^0.29.0:
     js-yaml "^4.1.0"
     micromatch "^4.0.0"
 
-workspace-tools@^0.36.3:
-  version "0.36.3"
-  resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.36.3.tgz#6921fb92ec4366c7016fa2052ab4dad3d1aa90b7"
-  integrity sha512-9kx+l+1ClwFbp5CM+3jwNYDFI2sHl0T1oA7ld/LKMnDcMm3225p6UjFUuXo7yMjBWCc2Yecat+0vqTHmdrzYlA==
+workspace-tools@^0.38.0:
+  version "0.38.1"
+  resolved "https://registry.yarnpkg.com/workspace-tools/-/workspace-tools-0.38.1.tgz#6654f6c2bbf1ea5b3359f3639499dcd453ee3cb3"
+  integrity sha512-EZWlrYrZcxd4XRQOMnARo9DOBRT37XWfGkRz+mTOH8z+WKJBgtovRjyVbWhdTe/8DkthrHa8v30FOjCAE021AA==
   dependencies:
     "@yarnpkg/lockfile" "^1.1.0"
     fast-glob "^3.3.1"
